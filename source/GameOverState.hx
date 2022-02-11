@@ -29,7 +29,8 @@ class GameOverState extends MusicBeatSubstate
 
 	public static var instance:GameOverState;
 	var curDiffic:Int;
-	
+	var songTing:String;
+	var difficultyExists:Bool = false;
 	override function create()
 	{
 		instance = this;
@@ -40,7 +41,10 @@ class GameOverState extends MusicBeatSubstate
 
 		FlxG.camera.flash(FlxColor.RED, 0.2);
 
+		difficultyExists = false;
+
 		if(PlayState.curStage.toLowerCase() == 'animatedbg') {
+			difficultyExists = false;
 			bf = new FlxSprite();
 			songTing = 'chosen';
 			bf.frames = Paths.getSparrowAtlas('deathAnims/TCO_Death', 'preload');
@@ -59,6 +63,8 @@ class GameOverState extends MusicBeatSubstate
 		}
 		else if (PlayState.curStage.toLowerCase() == 'tdl')
 		{
+			difficultyExists = false;
+			songTing = 'make-some-noise';
 			bf = new FlxSprite();
 			bf.frames = Paths.getSparrowAtlas('deathAnims/TDL_Death', 'preload');
 			bf.animation.addByPrefix('idle', 'TDL_DEATH', 24, false);
@@ -69,6 +75,12 @@ class GameOverState extends MusicBeatSubstate
 			bf.animation.play('idle');
 			bf.y += 300;
 		} else {
+			difficultyExists = true;
+			if (PlayState.gameOverPrefix == 0)
+				songTing = 'stickin-to-it';
+			if (PlayState.gameOverPrefix == 1)
+				songTing = 'blues-groove';
+
 			boyfriend = new Boyfriend(0,0,characterName);
 			boyfriend.x += boyfriend.positionArray[0];
 			boyfriend.y += boyfriend.positionArray[1];
@@ -210,10 +222,13 @@ class GameOverState extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
-					PlayState.SONG = Song.loadFromJson(songTing + '-hard', songTing);
+					if (difficultyExists)
+						PlayState.SONG = Song.loadFromJson(songTing + '-hard', songTing);
+					else
+						PlayState.SONG = Song.loadFromJson(songTing, songTing);
                     PlayState.isStoryMode = false;
                     PlayState.storyDifficulty = 3;
-					LoadingState.loadAndSwitchState(new PlayState());
+					FlxG.switchState(new PlayState());
 				});
 			});
 			PlayState.instance.callOnLuas('onGameOverConfirm', [true]);

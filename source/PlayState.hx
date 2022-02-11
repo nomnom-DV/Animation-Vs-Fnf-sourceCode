@@ -304,8 +304,15 @@ class PlayState extends MusicBeatState
 	var dodged:Bool;
 	var attacking:Bool;
 	var canDodge:Bool=true;
+	public static var gameOverPrefix:Int = 0;
 	override public function create()
 	{
+		if (curSong.toLowerCase() == 'stickin to it')
+			gameOverPrefix = 0;
+
+		if (curSong.toLowerCase() == 'blues groove')
+			gameOverPrefix = 1;
+
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
 		#end
