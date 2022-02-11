@@ -125,7 +125,7 @@ class GameOverState extends MusicBeatSubstate
 
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
 		if(updateCamera) {
-			var lerpVal:Float = CoolUtil.boundTo(elapsed * 1000, 0, 1);
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 1, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		}
 
@@ -222,10 +222,7 @@ class GameOverState extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
-					if (difficultyExists)
-						PlayState.SONG = Song.loadFromJson(songTing + '-hard', songTing);
-					else
-						PlayState.SONG = Song.loadFromJson(songTing, songTing);
+					PlayState.SONG = Song.loadFromJson(songTing, songTing);
                     PlayState.isStoryMode = false;
                     PlayState.storyDifficulty = 3;
 					FlxG.switchState(new PlayState());
