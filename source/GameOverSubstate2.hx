@@ -17,9 +17,9 @@ class GameOverSubstate2 extends MusicBeatSubstate
 	
 	override public function create()
 	{
+		stupidDeath = new FlxSprite(0, 0);
 		stupidDeath.frames = Paths.getSparrowAtlas('deathanims/TDL_Death', 'shared');
 		stupidDeath.antialiasing = ClientPrefs.globalAntialiasing;
-		stupidDeath.x -= 200;
 		stupidDeath.animation.addByPrefix('death', 'TDL_DEATH', 24);
 		stupidDeath.animation.addByPrefix('confirm', 'TDL_CONFIRM', 24);
 		stupidDeath.animation.addByPrefix('retry', 'TDL_RETRY', 24);
