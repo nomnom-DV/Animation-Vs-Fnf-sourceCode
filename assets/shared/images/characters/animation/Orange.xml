@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Orange.png">
+	<!-- Created with Adobe Animate version 21.0.5.40714 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Orange Idle Dance0000" x="0" y="0" width="375" height="714" pivotX="-154.05" pivotY="-143.5" frameX="0" frameY="-34" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0001" x="0" y="0" width="375" height="714" frameX="0" frameY="-34" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0002" x="375" y="0" width="362" height="731" frameX="0" frameY="-17" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0003" x="375" y="0" width="362" height="731" frameX="0" frameY="-17" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0004" x="737" y="0" width="355" height="742" frameX="0" frameY="-6" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0005" x="737" y="0" width="355" height="742" frameX="0" frameY="-6" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0006" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0007" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0008" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0009" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0010" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0011" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0012" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Idle Dance0013" x="1092" y="0" width="348" height="748" frameX="0" frameY="0" frameWidth="375" frameHeight="748"/>
+	<SubTexture name="Orange Note Down0000" x="1440" y="0" width="900" height="817" pivotX="161.6" pivotY="23.55" frameX="-2" frameY="-15" frameWidth="902" frameHeight="832"/>
+	<SubTexture name="Orange Note Down0001" x="1440" y="0" width="900" height="817" frameX="-2" frameY="-15" frameWidth="902" frameHeight="832"/>
+	<SubTexture name="Orange Note Down0002" x="2340" y="0" width="877" height="822" frameX="0" frameY="0" frameWidth="902" frameHeight="832"/>
+	<SubTexture name="Orange Note Down0003" x="2340" y="0" width="877" height="822" frameX="0" frameY="0" frameWidth="902" frameHeight="832"/>
+	<SubTexture name="Orange Note Down0004" x="2340" y="0" width="877" height="822" frameX="0" frameY="0" frameWidth="902" frameHeight="832"/>
+	<SubTexture name="Orange Note Left0000" x="3217" y="0" width="859" height="671" pivotX="171.65" pivotY="-124.6" frameX="0" frameY="-14" frameWidth="868" frameHeight="685"/>
+	<SubTexture name="Orange Note Left0001" x="3217" y="0" width="859" height="671" frameX="0" frameY="-14" frameWidth="868" frameHeight="685"/>
+	<SubTexture name="Orange Note Left0002" x="0" y="822" width="848" height="685" frameX="-20" frameY="0" frameWidth="868" frameHeight="685"/>
+	<SubTexture name="Orange Note Left0003" x="0" y="822" width="848" height="685" frameX="-20" frameY="0" frameWidth="868" frameHeight="685"/>
+	<SubTexture name="Orange Note Left0004" x="0" y="822" width="848" height="685" frameX="-20" frameY="0" frameWidth="868" frameHeight="685"/>
+	<SubTexture name="Orange Note Right0000" x="848" y="822" width="600" height="818" pivotX="176.7" pivotY="9.4" frameX="0" frameY="0" frameWidth="606" frameHeight="818"/>
+	<SubTexture name="Orange Note Right0001" x="848" y="822" width="600" height="818" frameX="0" frameY="0" frameWidth="606" frameHeight="818"/>
+	<SubTexture name="Orange Note Right0002" x="1448" y="822" width="606" height="790" frameX="0" frameY="-28" frameWidth="606" frameHeight="818"/>
+	<SubTexture name="Orange Note Right0003" x="1448" y="822" width="606" height="790" frameX="0" frameY="-28" frameWidth="606" frameHeight="818"/>
+	<SubTexture name="Orange Note Right0004" x="1448" y="822" width="606" height="790" frameX="0" frameY="-28" frameWidth="606" frameHeight="818"/>
+	<SubTexture name="Orange Sings Up0000" x="2054" y="822" width="796" height="874" pivotX="-46.8" pivotY="5" frameX="0" frameY="-12" frameWidth="796" frameHeight="886"/>
+	<SubTexture name="Orange Sings Up0001" x="2054" y="822" width="796" height="874" frameX="0" frameY="-12" frameWidth="796" frameHeight="886"/>
+	<SubTexture name="Orange Sings Up0002" x="2850" y="822" width="795" height="886" frameX="-1" frameY="0" frameWidth="796" frameHeight="886"/>
+	<SubTexture name="Orange Sings Up0003" x="2850" y="822" width="795" height="886" frameX="-1" frameY="0" frameWidth="796" frameHeight="886"/>
+	<SubTexture name="Orange Sings Up0004" x="2850" y="822" width="795" height="886" frameX="-1" frameY="0" frameWidth="796" frameHeight="886"/>
+</TextureAtlas>

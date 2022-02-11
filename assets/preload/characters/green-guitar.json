@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-3,
+				-276
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Greenguitar_down"
+		},
+		{
+			"offsets": [
+				-222,
+				-214
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Greenguitar_right"
+		},
+		{
+			"offsets": [
+				-217,
+				-133
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Greenguitar_up"
+		},
+		{
+			"offsets": [
+				-33,
+				-232
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Greenguiter_left"
+		},
+		{
+			"offsets": [
+				-153,
+				-169
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "Greenguitar_idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/animation/Greenguitar_sprites",
+	"position": [
+		-110,
+		-120
+	],
+	"healthicon": "green",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		215,
+		0
+	],
+	"camera_position": [
+		170,
+		260
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

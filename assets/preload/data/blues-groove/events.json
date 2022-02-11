@@ -1,0 +1,154 @@
+{
+	"song": {
+		"speed": 2.4,
+		"stage": "blue",
+		"player1": "bf",
+		"player2": "blue",
+		"player3": null,
+		"events": [
+			[
+				7000,
+				[
+					[
+						"Set CamZoom",
+						"0.7",
+						""
+					]
+				]
+			],
+			[
+				21333.3333333333,
+				[
+					[
+						"Set CamZoom",
+						"0.8",
+						""
+					]
+				]
+			],
+			[
+				35555.5555555556,
+				[
+					[
+						"Set CamZoom",
+						"0.7",
+						""
+					]
+				]
+			],
+			[
+				49777.7777777778,
+				[
+					[
+						"Set CamZoom",
+						"0.5",
+						""
+					]
+				]
+			],
+			[
+				56888.8888888889,
+				[
+					[
+						"Set CamZoom",
+						"0.6",
+						""
+					]
+				]
+			],
+			[
+				83555.5555555556,
+				[
+					[
+						"Set CamZoom",
+						"1",
+						""
+					],
+					[
+						"Camera Follow Pos",
+						"500",
+						"430"
+					]
+				]
+			],
+			[
+				84333.3333333334,
+				[
+					[
+						"Play Animation",
+						"potion",
+						"Dad"
+					]
+				]
+			],
+			[
+				85111.1111111112,
+				[
+					[
+						"Camera Flash",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				85222.2222222223,
+				[
+					[
+						"Change Scroll Speed",
+						"1.25",
+						"1"
+					]
+				]
+			],
+			[
+				85333.3333333334,
+				[
+					[
+						"Set CamZoom",
+						"0.8",
+						""
+					]
+				]
+			],
+			[
+				103111.111111111,
+				[
+					[
+						"Set CamZoom",
+						"0.7",
+						""
+					]
+				]
+			],
+			[
+				128000,
+				[
+					[
+						"Set CamZoom",
+						"0.8",
+						""
+					]
+				]
+			],
+			[
+				142222.222222222,
+				[
+					[
+						"Set CamZoom",
+						"0.5",
+						""
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "couch_green",
+		"bpm": 135,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"song": "Blues Groove"
+	}
+}

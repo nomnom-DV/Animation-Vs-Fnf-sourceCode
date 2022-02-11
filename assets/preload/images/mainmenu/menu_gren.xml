@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Untitled-5.png">
+	<!-- Created with Adobe Animate version 21.0.5.40714 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="gren basic0000" x="0" y="0" width="2400" height="1600" pivotX="2" pivotY="2" frameX="-2" frameY="-2" frameWidth="2402" frameHeight="1602"/>
+	<SubTexture name="gren white0001" x="0" y="1600" width="2402" height="1602"/>
+</TextureAtlas>

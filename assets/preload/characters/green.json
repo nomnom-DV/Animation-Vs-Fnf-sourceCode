@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				84,
+				-169
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Greennoteblock_idle"
+		},
+		{
+			"offsets": [
+				84,
+				-222
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Greennoteblock_down"
+		},
+		{
+			"offsets": [
+				84,
+				-212
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Greennoteblock_left"
+		},
+		{
+			"offsets": [
+				83,
+				-252
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Greennoteblock_right"
+		},
+		{
+			"offsets": [
+				84,
+				-213
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Greennoteblock_up"
+		},
+		{
+			"offsets": [
+				769,
+				15
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "switch",
+			"indices": [],
+			"name": "Green_switch"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/animation/Green_noteblocksprite",
+	"position": [
+		30,
+		-101
+	],
+	"healthicon": "green",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		255,
+		0
+	],
+	"camera_position": [
+		-340,
+		160
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
