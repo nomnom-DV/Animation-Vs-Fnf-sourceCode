@@ -6,7 +6,6 @@
 // deez nuts
 // deez nuts
 
-// true
 
 package;
 
@@ -299,10 +298,6 @@ class PlayState extends MusicBeatState
 	
 	// Less laggy controls
 	private var keysArray:Array<Dynamic>;
-
-	 /// attack
-	 var dodged:Bool;
-	 var attacking:Bool;
 
 	override public function create()
 	{
@@ -2280,11 +2275,6 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 
-		if(FlxG.keys.justPressed.SPACE && attacking && canDodge) dodged = true; canDodge = false;
-		new FlxTimer().start(0.8, function(tmr:FlxTimer) {
-			canDodge = true;
-		});
-
 		callOnLuas('onUpdate', [elapsed]);
 
 		#if debug
@@ -3087,7 +3077,7 @@ class PlayState extends MusicBeatState
 				killHenchmen();
 
 			case 'Dodge Mechanic':
-				attack();
+				AttackEvent();
 
 			case 'Add Camera Zoom':
 				if(ClientPrefs.camZooms && FlxG.camera.zoom < 1.35) {
@@ -4146,46 +4136,87 @@ class PlayState extends MusicBeatState
 	var pressedSpace:Bool = false;
 	var pressCounter = 0;
 
-	function attack()
-	{
-		dodged = false;
-		attacking=true;	
-		warning();
-		new FlxTimer().start(0.35, function(bozo:FlxTimer){
-			FlxG.sound.play(Paths.sound('darkLordAttack'));
-			dad.playAnim("attack",true);
-			if(!dodged) {
-				FlxG.camera.shake(0.05, 0.05);
-				health = 0;
-				trace("L bozo");
-				dodged=false;
-			} else {
-				boyfriend.playAnim('dodge');
-				dodged =false;
-				attacking = false;
-				health += 0.6;
-			}
-		});
-	}
-	function warning()
-	{
-		FlxG.sound.play(Paths.sound('alert'));
-		warningText.alpha = 1;
-		new FlxTimer().start(0.1, function(tmr:FlxTimer)
+	function bfBlock()
 		{
-			warningText.alpha = 0;
-		});
-		pressCounter = 0;
-		new FlxTimer().start(0.2, function(tmr:FlxTimer)
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				boyfriend.playAnim('dodge', true);
+			}
+		
+		}
+	function blockFail()
+		{
+			new FlxTimer().start(0.1, function(tmr:FlxTimer)
+			{
+				boyfriend.playAnim('singDOWNmiss', true);
+				if (health > 1)
+				{
+					health -= 2;
+				}
+				else
+				{
+					health -= 2;
+				}	
+					
+			});
+				FlxG.camera.shake(0.05, 0.05);
+	
+			}
+			function Warning()
 			{
 				FlxG.sound.play(Paths.sound('alert'));
 				warningText.alpha = 1;
-			});
-		new FlxTimer().start(0.3, function(tmr:FlxTimer)
+				new FlxTimer().start(0.1, function(tmr:FlxTimer)
+				{
+					warningText.alpha = 0;
+				});
+				pressCounter = 0;
+				new FlxTimer().start(0.2, function(tmr:FlxTimer)
+					{
+						FlxG.sound.play(Paths.sound('alert'));
+						warningText.alpha = 1;
+					});
+					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+						{
+							warningText.alpha = 0;
+						});
+		}
+
+	function Attack()
+		{			
+			FlxG.sound.play(Paths.sound('darkLordAttack'));
+			dad.playAnim("attack", true);
+			trace('heattac');
+		}
+
+	function AttackEvent()
+		{
+			Warning();
+			warningText.alpha = 1;
+			pressedSpace = false;
+			detectAttack = true;
+			new FlxTimer().start(0.35, function(tmr:FlxTimer)
 			{
-				warningText.alpha = 0;
+				Attack(); 
 			});
-	}
+			new FlxTimer().start(0.35, function(tmr:FlxTimer)
+			{
+				if (pressedSpace)
+				{
+					bfBlock();
+					trace('u block yey');
+					FlxG.camera.shake(0.02, 0.02);
+					health += 0.2;
+				}
+				else
+				{
+					pressedSpace = false;
+					detectAttack = false;
+					blockFail();
+					trace('u dumb dodge atleast better');
+				}
+			});
+		}
 
 	function opponentNoteHit(note:Note):Void
 	{
