@@ -1440,6 +1440,7 @@ class PlayState extends MusicBeatState
 
 				case 'chosen':
 					chosenBlack(doof);
+					startVideo("fight_cutscene");
 
 				default:
 					startCountdown();

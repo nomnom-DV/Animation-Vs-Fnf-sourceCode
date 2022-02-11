@@ -64,12 +64,12 @@ class GameOverState extends MusicBeatSubstate
 		else if (PlayState.curStage.toLowerCase() == 'tdl')
 		{
 			difficultyExists = false;
-			songTing = 'make-some-noise';
+			songTing = 'vengeance';
 			bf = new FlxSprite();
 			bf.frames = Paths.getSparrowAtlas('deathAnims/TDL_Death', 'preload');
 			bf.animation.addByPrefix('idle', 'TDL_DEATH', 24, false);
 			bf.animation.addByPrefix('idleDead', 'TDL_RETRY IDLE', 24, true);
-			bf.animation.addByPrefix('confirm', 'TDL_RETRY', 24, false);
+			bf.animation.addByPrefix('confirm', 'TDL_CONFIRM', 24, false);
 			bf.screenCenter();
 			add(bf);
 			bf.animation.play('idle');
@@ -141,9 +141,9 @@ class GameOverState extends MusicBeatSubstate
 			PlayState.seenCutscene = false;
 
 			if (PlayState.isStoryMode)
-				MusicBeatState.switchState(new MainMenuState());
+				FlxG.switchState(new MainMenuState());
 			else
-				MusicBeatState.switchState(new MainMenuState());
+				FlxG.switchState(new MainMenuState());
 
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
