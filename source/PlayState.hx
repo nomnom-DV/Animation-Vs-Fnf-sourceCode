@@ -300,11 +300,7 @@ class PlayState extends MusicBeatState
 	// Less laggy controls
 	private var keysArray:Array<Dynamic>;
 
-	 /// attack
-	 var dodged:Bool;
-	 var attacking:Bool;
-	 var canDodge:Bool=true;
-
+	/// attack
 	var dodged:Bool;
 	var attacking:Bool;
 	var canDodge:Bool=true;

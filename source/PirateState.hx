@@ -24,7 +24,7 @@ class PirateState extends MusicBeatState
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey there person man/woman   \n
+			"Hey there person man/woman  \n
 			Why are you playing on a website? Go get the actual game please,\n
 			Please press enter to go to the gamebanana page,\n
 			\n
