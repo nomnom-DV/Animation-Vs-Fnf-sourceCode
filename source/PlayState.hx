@@ -341,6 +341,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
+		FlxG.save.data.lastSongPlayed = curSong.toLowerCase();
+
 		// Gameplay settings
 		healthGain = ClientPrefs.getGameplaySetting('healthgain', 1);
 		healthLoss = ClientPrefs.getGameplaySetting('healthloss', 1);
@@ -2877,7 +2879,7 @@ class PlayState extends MusicBeatState
 				lowhpmusic.stop();
 				FlxG.sound.music.stop();
 
-				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+				MusicBeatState.switchState(new GameOverState());
 				for (tween in modchartTweens) {
 					tween.active = true;
 				}
