@@ -304,7 +304,10 @@ class PlayState extends MusicBeatState
 	 var dodged:Bool;
 	 var attacking:Bool;
 	 var canDodge:Bool=true;
-	 
+
+	var dodged:Bool;
+	var attacking:Bool;
+	var canDodge:Bool=true;
 	override public function create()
 	{
 		#if MODS_ALLOWED
