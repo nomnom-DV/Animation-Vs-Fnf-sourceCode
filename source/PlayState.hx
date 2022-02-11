@@ -2294,10 +2294,6 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.sugomaBalls = false;
 			FlxG.save.flush();
 		}
-		if (FlxG.keys.justPressed.NINE)
-		{
-			openSubState(new GameOverSubstate2());
-		}
 		#end
 
 		if (FlxG.keys.justPressed.SIX)
