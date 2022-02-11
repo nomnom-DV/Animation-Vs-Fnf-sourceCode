@@ -4154,11 +4154,7 @@ class PlayState extends MusicBeatState
 		dodged = false;
 		attacking=true;	
 		warning();
-<<<<<<< Updated upstream
-		new FlxTimer().start(0.41, function(bozo:FlxTimer){
-=======
 		new FlxTimer().start(0.45, function(bozo:FlxTimer){
->>>>>>> Stashed changes
 			FlxG.sound.play(Paths.sound('darkLordAttack'));
 			dad.playAnim("attack",true);
 			if(!dodged) {
@@ -4178,18 +4174,11 @@ class PlayState extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.sound('alert'));
 		warningText.alpha = 1;
-<<<<<<< Updated upstream
 		new FlxTimer().start(0.4, function(tmr:FlxTimer)
 		{
 			warningText.alpha = 0;
 		});
 		pressCounter = 0;
-=======
-		new FlxTimer().start(0.45, function(tmr:FlxTimer)
-		{
-			warningText.alpha = 0;
-		});
->>>>>>> Stashed changes
 	}
 
 	function opponentNoteHit(note:Note):Void
