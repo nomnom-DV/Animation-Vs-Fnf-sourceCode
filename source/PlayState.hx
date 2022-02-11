@@ -301,16 +301,13 @@ class PlayState extends MusicBeatState
 	private var keysArray:Array<Dynamic>;
 
 	 /// attack
-<<<<<<< Updated upstream
 	 var dodged:Bool;
 	 var attacking:Bool;
 	 var canDodge:Bool=true;
 
-=======
 	var dodged:Bool;
 	var attacking:Bool;
 	var canDodge:Bool=true;
->>>>>>> Stashed changes
 	override public function create()
 	{
 		#if MODS_ALLOWED
