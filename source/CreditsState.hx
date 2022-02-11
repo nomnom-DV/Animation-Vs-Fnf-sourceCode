@@ -77,8 +77,12 @@ class CreditsState extends MusicBeatState
 			['Sir Chapurato', 			'sirchap',			'Director and Charter',			'https://www.youtube.com/channel/UC37f51A8bNepi7PvD8owOxQ'],
 			['Salty Sovet',			'funnisovet',			'Lead coder and Co-Director', 			'https://www.youtube.com/channel/UC1qT2vh0aORFdHA4cVAHZUw'],
 			['Surge SPB',	'noiconhaha',	'Music (coolswag)',		'https://youtube.com/c/SurgeSPBMakesMusic'],
-			['Ekical',			'ekicalcoolswag',		'Coder',		'https://www.youtube.com/c/Ekical'], //coolswag
 			['Nom_lol',         'nomm',          'Coder',         'https://www.youtube.com/channel/UCSTIop1Eo1bkpqVTbGSE9WQ'],
+			['Ekical',			'ekicalcoolswag',		'Coder',		'https://www.youtube.com/c/Ekical'], //coolswag
+<<<<<<< Updated upstream
+			['Nom_lol',         'nomm',          'Coder',         'https://www.youtube.com/channel/UCSTIop1Eo1bkpqVTbGSE9WQ'],
+=======
+>>>>>>> Stashed changes
 			['Vidz',			'videos',		'Coder',		'https://twitter.com/ItsVidz3'], //fuck yoy
 			['Yes, Its bee',		'thefucingbee',		'Artist',		'https://www.youtube.com/channel/UCi4COUcfP89Il-PKJ33DlNg'],
 			['Hexal',	'hexal',	'Artist/Animator',	'https://www.youtube.com/c/Hexalhaxel'],
