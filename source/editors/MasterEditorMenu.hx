@@ -122,7 +122,11 @@ class MasterEditorMenu extends MusicBeatState
 				case 'Dialogue Editor':
 					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
 				case 'Chart Editor'://felt it would be cool maybe
-					CoolUtil.browserLoad('https://www.youtube.com/watch?v=Qtn0I4MNXRY&ab_channel=WatchMojo.com');
+					#if debug
+			                MusicBeatState.switchState(new ChartingState());
+			                #else
+			                CoolUtil.browserLoad('https://www.youtube.com/watch?v=Qtn0I4MNXRY&ab_channel=WatchMojo.com');
+			                #end
 			}
 			FlxG.sound.music.volume = 0;
 			#if PRELOAD_ALL
