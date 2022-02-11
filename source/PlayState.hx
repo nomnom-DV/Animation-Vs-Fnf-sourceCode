@@ -303,6 +303,7 @@ class PlayState extends MusicBeatState
 	 /// attack
 	 var dodged:Bool;
 	 var attacking:Bool;
+	 var canDodge:Bool=true;
 
 	override public function create()
 	{
@@ -2293,10 +2294,6 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.sugomaBalls = false;
 			FlxG.save.flush();
 		}
-		if (FlxG.keys.justPressed.NINE)
-		{
-			openSubState(new GameOverSubstate2());
-		}
 		#end
 
 		if (FlxG.keys.justPressed.SIX)
@@ -4151,7 +4148,7 @@ class PlayState extends MusicBeatState
 		dodged = false;
 		attacking=true;	
 		warning();
-		new FlxTimer().start(0.35, function(bozo:FlxTimer){
+		new FlxTimer().start(0.41, function(bozo:FlxTimer){
 			FlxG.sound.play(Paths.sound('darkLordAttack'));
 			dad.playAnim("attack",true);
 			if(!dodged) {
@@ -4171,20 +4168,11 @@ class PlayState extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.sound('alert'));
 		warningText.alpha = 1;
-		new FlxTimer().start(0.1, function(tmr:FlxTimer)
+		new FlxTimer().start(0.4, function(tmr:FlxTimer)
 		{
 			warningText.alpha = 0;
 		});
 		pressCounter = 0;
-		new FlxTimer().start(0.2, function(tmr:FlxTimer)
-			{
-				FlxG.sound.play(Paths.sound('alert'));
-				warningText.alpha = 1;
-			});
-		new FlxTimer().start(0.3, function(tmr:FlxTimer)
-			{
-				warningText.alpha = 0;
-			});
 	}
 
 	function opponentNoteHit(note:Note):Void
@@ -4569,7 +4557,7 @@ class PlayState extends MusicBeatState
 			camHUD.x += floatsX;
 			camHUD.y += floatsY;
 			
-			new FlxTimer().start(0.1, function(peen:FlxTimer)
+			new FlxTimer().start(0.04, function(peen:FlxTimer)
 				{
 					camHUD.x -= floatsX;
 					camHUD.y -= floatsY;
@@ -4581,7 +4569,7 @@ class PlayState extends MusicBeatState
 			FlxG.camera.x += floatsX;
 			FlxG.camera.y += floatsY;
 			
-			new FlxTimer().start(0.15, function(peen:FlxTimer)
+			new FlxTimer().start(0.07, function(peen:FlxTimer)
 				{
 					FlxG.camera.x -= floatsX;
 					FlxG.camera.y -= floatsY;

@@ -1,7 +1,7 @@
 {
 	"song": {
 		"speed": 3.1,
-		"stage": "green",
+		"stage": "alan",
 		"player1": "bf",
 		"player2": "green",
 		"player3": null,
@@ -501,7 +501,7 @@
 				[
 					[
 						"Change Character",
-						"1",
+						"dad",
 						"green-guitar"
 					]
 				]
@@ -770,10 +770,10 @@
 		"notes": [],
 		"splashSkin": null,
 		"validScore": false,
-		"gfVersion": "couch_green",
+		"gfVersion": "gf",
 		"bpm": 140,
 		"arrowSkin": null,
 		"needsVoices": true,
-		"song": "Stickin-To-It"
+		"song": "Stickin To It"
 	}
 }

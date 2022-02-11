@@ -1,16 +1,18 @@
-
-local xx = 900;
-local yy = 430;
+local xx = 600;
+local yy = 450;
 local xx2 = 900;
-local yy2 = 430;
-local ofs = 40;
+local yy2 = 550;
+local ofs = 30;
 local followchars = true;
 local del = 0;
 local del2 = 0;
 
 
+function onStartCountdown()
+setProperty('health', 2)
+end
+
 function onUpdate()
-    if curStep > 816 then
 	if del > 0 then
 		del = del - 1
 	end
@@ -70,7 +72,42 @@ function onUpdate()
     else
         triggerEvent('Camera Follow Pos','','')
     end
-    
-end
-end
+        if mustHitSection == false then
 
+            if getProperty('dad.animation.curAnim.name') == 'singUP' then
+
+                triggerEvent('Screen Shake','0.1,0.008','0.1,0.008')
+        else
+
+        if mustHitSection == false then
+
+            if getProperty('dad.animation.curAnim.name') == 'singDOWN' then
+
+                triggerEvent('Screen Shake','0.1,0.008','')
+
+        else
+
+        if mustHitSection == false then
+
+            if getProperty('dad.animation.curAnim.name') == 'singLEFT' then
+
+                triggerEvent('Screen Shake','0.1,0.008','')
+
+        else
+
+        if mustHitSection == false then
+
+            if getProperty('dad.animation.curAnim.name') == 'singRIGHT' then
+
+                triggerEvent('Screen Shake','0.1,0.008','')
+
+            end
+            end
+        end
+        end
+
+    end
+end
+end
+end
+end

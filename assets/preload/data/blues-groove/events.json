@@ -1,6 +1,6 @@
 {
 	"song": {
-		"speed": 2.4,
+		"speed": 2.5,
 		"stage": "blue",
 		"player1": "bf",
 		"player2": "blue",
@@ -72,7 +72,7 @@
 				]
 			],
 			[
-				84333.3333333334,
+				84444.4444444445,
 				[
 					[
 						"Play Animation",
@@ -82,28 +82,18 @@
 				]
 			],
 			[
-				85111.1111111112,
+				85222.2222222223,
 				[
 					[
 						"Camera Flash",
 						"1",
 						""
-					]
-				]
-			],
-			[
-				85222.2222222223,
-				[
+					],
 					[
 						"Change Scroll Speed",
 						"1.25",
 						"1"
-					]
-				]
-			],
-			[
-				85333.3333333334,
-				[
+					],
 					[
 						"Set CamZoom",
 						"0.8",
@@ -145,7 +135,7 @@
 		"notes": [],
 		"splashSkin": null,
 		"validScore": false,
-		"gfVersion": "couch_green",
+		"gfVersion": "couch_blue",
 		"bpm": 135,
 		"arrowSkin": null,
 		"needsVoices": true,
