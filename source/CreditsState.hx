@@ -86,7 +86,7 @@ class CreditsState extends MusicBeatState
 			['Cheese Farmer',	'CHEESE',	'Artist',	'https://www.youtube.com/channel/UCGSX2AqYE98-Rq59qINt3BQ'],
 			['Sensisgone', 'sens', 'Charting', 'https://www.youtube.com/channel/UCtcQQMhWDd_v7tgwbfNuW3w'],				
 			['Serkoid',			'noiconhaha',			'Coder and Artist',			'https://www.youtube.com/channel/UCWXYCOhrmye32o-zvu-GtPQ'],
-			['Chromasen',		'noiconhaha',		'Coder',		'https://www.youtube.com/channel/UCgGk4oZt3We-ktkEOV9HY1Q'],
+			['Chromasen',		'noiconhaha',		'Coder',		'https://twitter.com/ChromaSen'],
 			['Reginald Reborn', 'noiconhaha', 'Charting', 'https://gamebanana.com/members/2011865'],
 			['CancerPinguin2.0', 'noiconhaha', 'Charting', 'https://steamcommunity.com/profiles/76561198886673790/'],
 			['LeGoldenBoots', 'noiconhaha', 'Coding', 'https://www.youtube.com/channel/UCysojweWJ_X3iaTAMAvNFCQ'],
