@@ -7228,7 +7228,7 @@
 			}
 		],
 		"player2": "green",
-		"gfVersion": "couch_green",
+		"gfVersion": "gf",
 		"events": [
 			[
 				85500,
@@ -7262,7 +7262,7 @@
 		"song": "Stickin To It",
 		"sections": 0,
 		"validScore": true,
-		"stage": "green",
+		"stage": "alan",
 		"needsVoices": true,
 		"bpm": 140,
 		"speed": 3.1

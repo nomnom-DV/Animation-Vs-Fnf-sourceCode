@@ -2,7 +2,7 @@
 	"song": {
 		"player1": "bf",
 		"events": [],
-		"gfVersion": "couch_blue",
+		"gfVersion": "gf",
 		"player2": "blue",
 		"notes": [
 			{
@@ -5003,7 +5003,7 @@
 		],
 		"player3": null,
 		"song": "Blues Groove",
-		"stage": "blue",
+		"stage": "alan",
 		"validScore": true,
 		"needsVoices": true,
 		"speed": 2.5,
