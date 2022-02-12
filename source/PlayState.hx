@@ -2350,7 +2350,7 @@ class PlayState extends MusicBeatState
 		{
 			canPause = false;
 			timeBar.visible = false;
-			timebarBG.visible = false;
+			timeBarBG.visible = false;
 			scoreTxt.visible = false;
 		}
 
