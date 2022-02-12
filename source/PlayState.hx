@@ -2364,6 +2364,9 @@ class PlayState extends MusicBeatState
 			if (FlxG.keys.justPressed.SPACE)
 				{
 					boyfriend.playAnim('dodge', true);
+					new FlxTimer().start(0.2, function(tmr:FlxTimer) {
+						dodged = false;
+					});
 				}
 		}
 
@@ -3637,6 +3640,12 @@ class PlayState extends MusicBeatState
 						MusicBeatState.switchState(new MainMenuState());
 						trace('lol you need 2 points');
 					}
+					if (SONG.song.toLowerCase() == 'chosen') {
+						MusicBeatState.switchState(new MainMenuState());
+					}
+					if (SONG.song.toLowerCase() == 'make some noise') {
+						MusicBeatState.switchState(new MainMenuState());
+					}
 				trace('WENT BACK TO FREEPLAY??');
 				cancelFadeTween();
 				CustomFadeTransition.nextCamera = camOther;
@@ -4775,8 +4784,6 @@ class PlayState extends MusicBeatState
 					dadFloat();
 					dadTrail();
 					yes();
-					camHUD.visible = false;
-				case 120: camHUD.visible = true;
 			}
 		}
 		if (curSong.toLowerCase() == 'stickin to it') {

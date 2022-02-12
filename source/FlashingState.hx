@@ -24,11 +24,11 @@ class FlashingState extends MusicBeatState
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey, watch out!\n
-			This Mod contains some flashing lights!\n
-			Press ENTER to disable them now or go to Options Menu.\n
-			Press ESCAPE to ignore this message.\n
-			You've been warned!",
+			"Hey there person man/woman   \n
+			This song contains some flashing and it may cause a headache,\n
+			Press Esc if you want to disable it or press Enter if you don't wanna disable it,\n
+			\n
+			Hope you enjoy this song",
 			32);
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
@@ -37,42 +37,26 @@ class FlashingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if(!leftState) {
-			var back:Bool = controls.BACK;
-			if (controls.ACCEPT || back) {
-				leftState = true;
-				FlxTransitionableState.skipNextTransIn = true;
-				FlxTransitionableState.skipNextTransOut = true;
-				if(!back) {
+			if (FlxG.keys.justPressed.ENTER) {
+				PlayState.SONG = Song.loadFromJson('stickin-to-it', 'Stickin-To-It');
+                LoadingState.loadAndSwitchState(new PlayState());
+				ClientPrefs.flashing = true;
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+                FlxTween.tween(warnText, {alpha: 0}, 1, {
+                });
+			}
+            if (FlxG.keys.justPressed.ESCAPE)
+            {
+                {
+					PlayState.SONG = Song.loadFromJson('stickin-to-it', 'Stickin-To-It');
+                    LoadingState.loadAndSwitchState(new PlayState());
 					ClientPrefs.flashing = false;
 					ClientPrefs.saveSettings();
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
-						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-							PlayState.SONG = Song.loadFromJson('stickin-to-it', 'Stickin-To-It');
-							PlayState.isStoryMode = false;
-							PlayState.storyDifficulty = 1;
-							PlayState.storyWeek = 1;
-							LoadingState.loadAndSwitchState(new PlayState());
-						});
-					});
-				} else {
-					FlxG.sound.play(Paths.sound('cancelMenu'));
-					FlxTween.tween(warnText, {alpha: 0}, 1, {
-						onComplete: function (twn:FlxTween) {
-							PlayState.SONG = Song.loadFromJson('stickin-to-it', 'Stickin-To-It');
-							PlayState.isStoryMode = false;
-							PlayState.storyDifficulty = 1;
-							PlayState.storyWeek = 1;
-							new FlxTimer().start(1.5, function(tmr:FlxTimer)
-							{
-								LoadingState.loadAndSwitchState(new PlayState());
-							});
-						}
-					});
-				}
-			}
-		}
+                    FlxG.sound.play(Paths.sound('cancelMenu'));
+                    FlxTween.tween(warnText, {alpha: 0}, 1, {
+                    });
+                }
+		    }
 		super.update(elapsed);
-	}
+   }
 }

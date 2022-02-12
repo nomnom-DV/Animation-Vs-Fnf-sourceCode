@@ -37,9 +37,7 @@ class WarningState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if(!leftState) {
 			if (controls.ACCEPT) {
-				leftState = true;
                 PlayState.animatedbgdisable = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
                 PlayState.SONG = Song.loadFromJson('chosen', 'chosen');
@@ -50,7 +48,6 @@ class WarningState extends MusicBeatState
             else if (controls.BACK) 
             {
                 {
-                    leftState = true;
                     PlayState.animatedbgdisable = true;
                     FlxG.sound.play(Paths.sound('cancelMenu'));
                     PlayState.SONG = Song.loadFromJson('chosen', 'chosen');
@@ -60,6 +57,5 @@ class WarningState extends MusicBeatState
                 }
 		    }
 		super.update(elapsed);
-	 }
    }
 }

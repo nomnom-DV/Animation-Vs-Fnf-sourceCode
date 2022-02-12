@@ -222,7 +222,7 @@ class CodeState extends MusicBeatState
                 wrongCode.alpha = 0;
             }
 
-            if (code.length >= 22)
+            if (code.length > 15)
             {
                 code = "";
                 curCode = '';
