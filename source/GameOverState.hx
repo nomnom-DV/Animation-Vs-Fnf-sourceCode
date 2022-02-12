@@ -43,10 +43,6 @@ class GameOverState extends MusicBeatSubstate
 
 		difficultyExists = false;
 
-		boyfriend = new Boyfriend(0,0,characterName);
-		boyfriend.x += boyfriend.positionArray[0];
-		boyfriend.y += boyfriend.positionArray[1];
-
 		if(PlayState.curStage.toLowerCase() == 'animatedbg') {
 			difficultyExists = false;
 			bf = new FlxSprite();
@@ -57,6 +53,7 @@ class GameOverState extends MusicBeatSubstate
 			add(bf);
 			bf.animation.play('idle');
 			bf.y += 300;
+			bf.x -= 200;
 			bfretry = new FlxSprite();
 			bfretry.frames = Paths.getSparrowAtlas('deathAnims/TCO_Retry', 'preload');
 			bfretry.animation.addByPrefix('confirm', 'TCO_CONFIRM', 24, false);
@@ -64,34 +61,32 @@ class GameOverState extends MusicBeatSubstate
 			bfretry.visible = false;
 			add(bfretry);
 			bfretry.y += 300;
-			bf.screenCenter();
-			bfretry.screenCenter();
 		}
 		else if (PlayState.curStage.toLowerCase() == 'tdl')
 		{
 			difficultyExists = false;
 			songTing = 'vengeance';
-			bf = new FlxSprite();
-			bf.frames = Paths.getSparrowAtlas('deathAnims/TDL_Death', 'preload');
-			bf.animation.addByPrefix('idle', 'TDL_DEATH', 24, false);
-			bf.animation.addByPrefix('idleDead', 'TDL_RETRY IDLE', 24, true);
-			bf.animation.addByPrefix('confirm', 'TDL_CONFIRM', 24, false);
-			bf.screenCenter();
-			add(bf);
-			bf.animation.play('idle');
-			bf.y += 300;
-			bf.screenCenter();
+			boyfriend = new Boyfriend(0,0,'tdl-death');
+			boyfriend.x += boyfriend.positionArray[0];
+			boyfriend.y += boyfriend.positionArray[1];
+			add(boyfriend);
 		} else {
 			difficultyExists = true;
 			if (PlayState.gameOverPrefix == 0)
 				songTing = 'stickin-to-it';
 			if (PlayState.gameOverPrefix == 1)
 				songTing = 'blues-groove';
+
+			boyfriend = new Boyfriend(0,0,characterName);
+			boyfriend.x += boyfriend.positionArray[0];
+			boyfriend.y += boyfriend.positionArray[1];
 			add(boyfriend);
-			boyfriend.screenCenter();
-			
 		}
 
+		if(PlayState.curStage.toLowerCase() == 'animatedbg') 
+			camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);
+		else
+			camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
@@ -101,33 +96,38 @@ class GameOverState extends MusicBeatSubstate
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
-		if(PlayState.curStage.toLowerCase() == 'animatedbg' || PlayState.curStage.toLowerCase() == 'tdl') 
+		if(PlayState.curStage.toLowerCase() == 'animatedbg') 
 			bf.animation.play('idle');
 		else 
 			boyfriend.playAnim('firstDeath');
 
 		var exclude:Array<Int> = [];
 
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
+		add(camFollowPos);
+
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
+		if(PlayState.curStage.toLowerCase() == 'animatedbg') {
+			camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);
+			FlxG.camera.target = bf;
+			}	else{
+			camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
+			FlxG.camera.target = boyfriend;
+			}
 
 		super.update(elapsed);
 
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
+		if(updateCamera) {
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 1, 0, 1);
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+		}
 
-		if (PlayState.curStage.toLowerCase() == 'animatedbg')
-			{
-				bf.screenCenter();
-				bfretry.screenCenter();
-			}
-		else if (PlayState.curStage.toLowerCase() == 'tdl')
-				bf.screenCenter();
-		else 
-			boyfriend.screenCenter();
-		
 		if (controls.ACCEPT)
 		{
 			endBullshit();
@@ -140,17 +140,17 @@ class GameOverState extends MusicBeatSubstate
 			PlayState.seenCutscene = false;
 
 			if (PlayState.isStoryMode)
-				FlxG.switchState(new MainMenuState());
+				MusicBeatState.switchState(new MainMenuState());
 			else
-				FlxG.switchState(new MainMenuState());
+				MusicBeatState.switchState(new MainMenuState());
 
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 		}
 
-		if (PlayState.curStage.toLowerCase() == 'tdl' || PlayState.curStage.toLowerCase() == 'animatedbg' && bf.animation.curAnim.name == 'idle')
+		if (PlayState.curStage.toLowerCase() == 'animatedbg' && bf.animation.curAnim.name == 'idle')
 			{	
-				if(bf.animation.curAnim.curFrame == 7)
+				if(bf.animation.curAnim.curFrame == 12)
 					{
 						FlxG.camera.follow(camFollowPos, LOCKON, 1);
 						updateCamera = true;
@@ -206,9 +206,7 @@ class GameOverState extends MusicBeatSubstate
 		if (!isEnding)
 		{
 			isEnding = true;
-			if (PlayState.curStage.toLowerCase() == 'tdl')
-				bf.animation.play('confirm');
-			else if (PlayState.curStage.toLowerCase() == 'animatedbg') {
+			if (PlayState.curStage.toLowerCase() == 'animatedbg') {
 				bfretry.visible = true;
 				bf.visible= false;
 				bfretry.animation.play('confirm');
