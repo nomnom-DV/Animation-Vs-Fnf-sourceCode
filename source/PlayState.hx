@@ -3575,9 +3575,7 @@ class PlayState extends MusicBeatState
 
 						FlxG.save.data.sugomaBalls = true;
 						FlxG.save.flush();
-					} else {
-						MusicBeatState.switchState(new MainMenuState());
-					}		
+					}			
 					if (SONG.song.toLowerCase() == 'blues groove' && FlxG.save.data.socialCredits == 2)
 					{
 							FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -3593,8 +3591,6 @@ class PlayState extends MusicBeatState
 
 							FlxG.save.data.sugomaBalls = true;
 							FlxG.save.flush();
-					} else {
-						MusicBeatState.switchState(new MainMenuState());
 					}
 				trace('WENT BACK TO FREEPLAY??');
 				cancelFadeTween();
