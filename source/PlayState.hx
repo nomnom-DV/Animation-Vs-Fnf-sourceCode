@@ -1431,7 +1431,7 @@ class PlayState extends MusicBeatState
 						remove(blackScreen);
 						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
 							ease: FlxEase.quadInOut,
-							onComplete: function(twn:FlxTween)
+							onComplete: function(twn:FlxTween) 
 							{
 								startCountdown();
 							}
@@ -4167,6 +4167,7 @@ class PlayState extends MusicBeatState
 		new FlxTimer().start(0.45, function(bozo:FlxTimer){
 			FlxG.sound.play(Paths.sound('darkLordAttack'));
 			dad.playAnim("attack",true);
+			dad.specialAnim = true;
 			if(!dodged) {
 				FlxG.camera.shake(0.05, 0.05);
 				health = 0;
