@@ -3615,10 +3615,10 @@ class PlayState extends MusicBeatState
 							MusicBeatState.switchState(new HintState());
 						}
 
-						FlxG.save.data.sugomaBalls = true;
-						FlxG.save.flush();
-					}	 else {
+						trace('hints where');
+					} else {
 						MusicBeatState.switchState(new MainMenuState());
+						trace('lol you need 2 points');
 					}		
 					if (SONG.song.toLowerCase() == 'blues groove' && FlxG.save.data.socialCredits == 2)
 					{
@@ -3629,14 +3629,13 @@ class PlayState extends MusicBeatState
 
 							if (FlxG.save.data.sugomaBalls = true) {
 								MusicBeatState.switchState(new MainMenuState());
+								trace('hints where');
 							} else {
 								MusicBeatState.switchState(new HintState());
 							}
-
-							FlxG.save.data.sugomaBalls = true;
-							FlxG.save.flush();
 					} else {
 						MusicBeatState.switchState(new MainMenuState());
+						trace('lol you need 2 points');
 					}
 				trace('WENT BACK TO FREEPLAY??');
 				cancelFadeTween();

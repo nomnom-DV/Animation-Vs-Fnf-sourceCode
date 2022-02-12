@@ -101,7 +101,8 @@ class HintState extends MusicBeatState
 
     override function update(elapsed:Float)
     {
-        PlayState.sugomaBalls = true;
+        FlxG.save.data.sugomaBalls = true;
+        FlxG.save.flush();
 
         if(!leftState) {
             if (controls.ACCEPT || controls.BACK) {
