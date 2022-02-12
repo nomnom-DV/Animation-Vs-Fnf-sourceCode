@@ -305,6 +305,11 @@ class PlayState extends MusicBeatState
 	var attacking:Bool;
 	var canDodge:Bool=true;
 	public static var gameOverPrefix:Int = 0;
+	var perBeatZoom:Bool = false;
+	var perBeatFlash:Bool = false;
+	var chromIsSoAngyRnSaveMeLol:Float = 0;
+
+	var vignette:FlxSprite;
 	override public function create()
 	{
 		if (curSong.toLowerCase() == 'stickin to it')
@@ -786,6 +791,23 @@ class PlayState extends MusicBeatState
 				bg.x += 75;
 				add(bg);
 			case 'animatedbg':
+
+				var videos = [];
+				trace("caching images...");
+	
+				for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/videos/")))
+				{
+					if (!i.endsWith(".mp4"))
+						continue;
+					videos.push(i);
+				}
+				for (i in videos)
+				{
+					var replaced = i.replace(".mp4","");
+					FlxG.bitmap.add(Paths.video("assets/videos/" + replaced,"shared"));
+					trace("this is " + replaced);
+				}
+
 				animatedbg = new BGSprite('animatedbg', 620, 330, 0, 0);
 				animatedbg.scale.set(2.7, 2.7);
 				//animatedbg.screenCenter();
@@ -794,10 +816,13 @@ class PlayState extends MusicBeatState
 
 				backdudes = new BGSprite('YellowBlueGreen', -400, 400, 0.9, 0.9, ['Back instance 1']);
 				backdudes.updateHitbox();
+				add(backdudes);
+				remove(backdudes);
 
 				frontdudes = new BGSprite('RedAndOrange', -600, 400, 0.9, 0.9, ['Front instance 1']);
 				frontdudes.updateHitbox();
-				
+				add(frontdudes);
+				remove(frontdudes);
 				
 				var video:MP4Handler = new MP4Handler();
 				video.playMP4(Paths.video('animatedbg'), null, animatedbg);
@@ -1190,6 +1215,14 @@ class PlayState extends MusicBeatState
 		warningText.scale.set(0.5, 0.5);
 		add(warningText);
 
+		vignette = new FlxSprite().loadGraphic(Paths.image('vignette', 'shared'));
+		vignette.screenCenter();
+		vignette.scrollFactor.set();
+		vignette.alpha = 0;
+		vignette.cameras = [camHUD];
+		vignette.color = FlxColor.GREEN;
+		if (curSong.toLowerCase() == 'stickin to it') add(vignette);
+
 		glitchEffect = new FlxSprite();
 		glitchEffect.frames = Paths.getSparrowAtlas('glitchAnim');
 		glitchEffect.alpha = 0;
@@ -1199,7 +1232,7 @@ class PlayState extends MusicBeatState
 		glitchEffect.scrollFactor.set();
 		glitchEffect.updateHitbox();
 		glitchEffect.screenCenter();
-		add(glitchEffect);
+		if (curSong.toLowerCase() == 'chosen') add(glitchEffect);
 
 		if (SONG.song.toLowerCase() == 'stickin to it') {
 			creditsBG = new FlxSprite(0, 0).makeGraphic(60, 12, FlxColor.LIME);
@@ -3280,6 +3313,12 @@ class PlayState extends MusicBeatState
 						}
 					});
 				}
+			case 'tween zoom (start)':
+				var value:Int = Std.parseInt(value1);
+				var value2:Int = Std.parseInt(value2);
+				FlxTween.tween(FlxG.camera, {zoom: value}, value2);
+			case 'tween zoom (end)':
+				FlxTween.cancelTweensOf(FlxG.camera);
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -4454,6 +4493,23 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	function flashColorTing(color:Int)
+		{
+			switch(color)
+			{
+				case 0:
+					FlxG.camera.flash(FlxColor.LIME, 0.6);
+			//	case 1:
+			//		FlxG.camera.flash(FlxColor.fromRGB(26,199,88), 0.6);
+			//	case 2:
+			//		FlxG.camera.flash(FlxColor.fromRGB(15,82,186), 0.6);
+			//	case 3:
+			//		FlxG.camera.flash(FlxColor.fromRGB(80,220,100), 0.6);
+			//	case 4:
+			//		FlxG.camera.flash(FlxColor.fromRGB(219,0,0), 0.6);
+			}
+		}
+
 	var trainMoving:Bool = false;
 	var trainFrameTiming:Float = 0;
 
@@ -4719,6 +4775,18 @@ class PlayState extends MusicBeatState
 					yes();
 			}
 		}
+		if (curSong.toLowerCase() == 'stickin to it') {
+			switch(curStep)
+				{
+					case 800:
+						defaultCamZoom = 1;
+					case 816:
+						FlxTween.tween(vignette, {alpha: 1}, 0.2);
+						perBeatZoom = true;
+						defaultCamZoom = 0.9;
+						perBeatFlash = true;
+				}
+		}
 
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
@@ -4783,12 +4851,26 @@ class PlayState extends MusicBeatState
 		{
 			moveCameraSection(Std.int(curStep / 16));
 		}
-		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 4 == 0)
+		if (camZooming && !perBeatZoom && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 4 == 0)
 		{
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
-
+		if (perBeatZoom && camZooming)
+			{
+				chromIsSoAngyRnSaveMeLol = 0.2;
+ 				camHUD.zoom += 0.07;
+			}
+			if (perBeatZoom && curBeat % 4 == 0) {
+					defaultCamZoom = 0.87;
+				new FlxTimer().start(1, function(tmr:FlxTimer) {
+					defaultCamZoom = 0.8;
+				});
+			}
+		if (perBeatFlash && ClientPrefs.flashing)
+			{
+				flashColorTing(0);
+			}
 		iconP1.scale.set(1.2, 1.2);
 		iconP2.scale.set(1.2, 1.2);
 

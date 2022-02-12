@@ -356,14 +356,7 @@ class SongSelectionState extends MusicBeatState
 											LoadingState.loadAndSwitchState(new PlayState());
 										});
 									case 'gren':
-										PlayState.SONG = Song.loadFromJson('stickin-to-it', 'Stickin-To-It');
-										PlayState.isStoryMode = false;
-										PlayState.storyDifficulty = 1;
-										PlayState.storyWeek = 1;
-										new FlxTimer().start(1.5, function(tmr:FlxTimer)
-										{
-											LoadingState.loadAndSwitchState(new PlayState());
-										});
+										FlxG.switchState(new FlashingState());
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':

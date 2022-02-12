@@ -77,7 +77,6 @@ class CreditsState extends MusicBeatState
 			['Sir Chapurato', 			'sirchap',			'Director and Charter',			'https://www.youtube.com/channel/UC37f51A8bNepi7PvD8owOxQ'],
 			['Salty Sovet',			'funnisovet',			'Lead coder and Co-Director', 			'https://www.youtube.com/channel/UC1qT2vh0aORFdHA4cVAHZUw'],
 			['Surge SPB',	'noiconhaha',	'Music (coolswag)',		'https://youtube.com/c/SurgeSPBMakesMusic'],
-			['Nom_lol',         'nomm',          'Coder',         'https://www.youtube.com/channel/UCSTIop1Eo1bkpqVTbGSE9WQ'],
 			['Ekical',			'ekicalcoolswag',		'Coder',		'https://www.youtube.com/c/Ekical'], //coolswag
 			['Nom_lol',         'nomm',          'Coder',         'https://www.youtube.com/channel/UCSTIop1Eo1bkpqVTbGSE9WQ'], //balls
 			['Vidz',			'videos',		'Coder',		'https://twitter.com/ItsVidz3'], //fuck yoy

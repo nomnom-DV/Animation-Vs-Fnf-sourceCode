@@ -460,11 +460,6 @@
 				85500,
 				[
 					[
-						"Camera Follow Pos",
-						"600",
-						"430"
-					],
-					[
 						"Set CamZoom",
 						"1",
 						""
@@ -478,6 +473,26 @@
 						"Play Animation",
 						"switch",
 						"Dad"
+					]
+				]
+			],
+			[
+				87000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				87241.0714285714,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
 					]
 				]
 			],

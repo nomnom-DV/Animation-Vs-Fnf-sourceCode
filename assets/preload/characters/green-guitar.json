@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-3,
 				-276
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Greenguitar_down"
+			"fps": 24,
+			"name": "Greenguitar_down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-222,
 				-214
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Greenguitar_right"
+			"fps": 24,
+			"name": "Greenguitar_right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-217,
 				-133
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Greenguitar_up"
+			"fps": 24,
+			"name": "Greenguitar_up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-33,
 				-232
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Greenguiter_left"
+			"fps": 24,
+			"name": "Greenguiter_left",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				-153,
 				-169
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "Greenguitar_idle"
+			"fps": 24,
+			"name": "Greenguitar_idle",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		170,
-		260
+		60,
+		110
 	],
 	"sing_duration": 6.1,
 	"scale": 1
