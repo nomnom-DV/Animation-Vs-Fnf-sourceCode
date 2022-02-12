@@ -97,6 +97,8 @@ class HintState extends MusicBeatState
         randomText.cameras = [camOther];
         vengeanceText.cameras = [camOther];
         chosenText.cameras = [camChosen];
+
+        trace('hints lol');
     }
 
     override function update(elapsed:Float)

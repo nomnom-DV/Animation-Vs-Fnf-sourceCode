@@ -353,6 +353,7 @@ class MainMenuState extends MusicBeatState
 		{
 			trace('Social Credits: ' + FlxG.save.data.socialCredits);
 			trace('Curselected: ' + curSelected);
+			trace('Balls: ' + FlxG.save.data.sugomaBalls);
 		}
 
 		#if debug

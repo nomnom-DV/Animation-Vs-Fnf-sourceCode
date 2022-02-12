@@ -3616,7 +3616,7 @@ class PlayState extends MusicBeatState
 						}
 
 						trace('hints where');
-					} else {
+					} else if (SONG.song.toLowerCase() == 'stickin to it' && FlxG.save.data.socialCredits < 2) {
 						MusicBeatState.switchState(new MainMenuState());
 						trace('lol you need 2 points');
 					}		
@@ -3627,13 +3627,13 @@ class PlayState extends MusicBeatState
 							FlxG.save.data.sugomaBalls = sugomaBalls;
 							FlxG.save.flush();
 
-							if (FlxG.save.data.sugomaBalls = true) {
+							if (FlxG.save.data.sugomaBalls == true) {
 								MusicBeatState.switchState(new MainMenuState());
 								trace('hints where');
 							} else {
 								MusicBeatState.switchState(new HintState());
 							}
-					} else {
+					} else if (SONG.song.toLowerCase() == 'blues groove' && FlxG.save.data.socialCredits < 2) {
 						MusicBeatState.switchState(new MainMenuState());
 						trace('lol you need 2 points');
 					}
