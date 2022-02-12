@@ -2349,6 +2349,9 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'chosen')
 		{
 			canPause = false;
+			timeBar.visible = false;
+			timebarBG.visible = false;
+			scoreTxt.visible = false;
 		}
 
 		if (SONG.song.toLowerCase() == 'vengeance')
@@ -4773,6 +4776,8 @@ class PlayState extends MusicBeatState
 					dadFloat();
 					dadTrail();
 					yes();
+					camHUD.visible = false;
+				case 120: camHUD.visible = true;
 			}
 		}
 		if (curSong.toLowerCase() == 'stickin to it') {
