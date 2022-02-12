@@ -43,10 +43,6 @@ class GameOverState extends MusicBeatSubstate
 
 		difficultyExists = false;
 
-		boyfriend = new Boyfriend(0,0,characterName);
-		boyfriend.x += boyfriend.positionArray[0];
-		boyfriend.y += boyfriend.positionArray[1];
-
 		if(PlayState.curStage.toLowerCase() == 'animatedbg') {
 			difficultyExists = false;
 			bf = new FlxSprite();
@@ -64,8 +60,6 @@ class GameOverState extends MusicBeatSubstate
 			bfretry.visible = false;
 			add(bfretry);
 			bfretry.y += 300;
-			bf.screenCenter();
-			bfretry.screenCenter();
 		}
 		else if (PlayState.curStage.toLowerCase() == 'tdl')
 		{
@@ -80,18 +74,23 @@ class GameOverState extends MusicBeatSubstate
 			add(bf);
 			bf.animation.play('idle');
 			bf.y += 300;
-			bf.screenCenter();
 		} else {
 			difficultyExists = true;
 			if (PlayState.gameOverPrefix == 0)
 				songTing = 'stickin-to-it';
 			if (PlayState.gameOverPrefix == 1)
 				songTing = 'blues-groove';
+
+			boyfriend = new Boyfriend(0,0,characterName);
+			boyfriend.x += boyfriend.positionArray[0];
+			boyfriend.y += boyfriend.positionArray[1];
 			add(boyfriend);
-			boyfriend.screenCenter();
-			
 		}
 
+		if(PlayState.curStage.toLowerCase() == 'animatedbg' || PlayState.curStage.toLowerCase() == 'tdl') 
+			camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);
+		else
+			camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
@@ -108,26 +107,28 @@ class GameOverState extends MusicBeatSubstate
 
 		var exclude:Array<Int> = [];
 
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
+		add(camFollowPos);
+
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
+		if(PlayState.curStage.toLowerCase() == 'animatedbg' || PlayState.curStage.toLowerCase() == 'tdl') 
+			camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);
+		else
+			camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
 		super.update(elapsed);
 
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
+		if(updateCamera) {
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 1, 0, 1);
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+		}
 
-		if (PlayState.curStage.toLowerCase() == 'animatedbg')
-			{
-				bf.screenCenter();
-				bfretry.screenCenter();
-			}
-		else if (PlayState.curStage.toLowerCase() == 'tdl')
-				bf.screenCenter();
-		else 
-			boyfriend.screenCenter();
-		
 		if (controls.ACCEPT)
 		{
 			endBullshit();
