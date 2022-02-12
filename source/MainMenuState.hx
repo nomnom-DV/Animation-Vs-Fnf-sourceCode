@@ -73,6 +73,10 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+
+		FlxG.sound.music.fadeIn(4, 0, 0.7);
+
 		FlxG.mouse.visible = false;
 
 		WeekData.setDirectoryFromWeek();
