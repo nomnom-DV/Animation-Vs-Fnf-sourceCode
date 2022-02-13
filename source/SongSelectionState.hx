@@ -258,19 +258,21 @@ class SongSelectionState extends MusicBeatState
 
 		if (FlxG.save.data.socialCredits == 0)
 		{
+			FlxG.mouse.visible = false;
 			codeMenu.visible = false;
 			trace(PlayState.socialCredits);
 		}
 
 		if (FlxG.save.data.socialCredits == 1)
 		{
+			FlxG.mouse.visible = false;
 			codeMenu.visible = false;
 			trace(PlayState.socialCredits);
 		}
 
 		if (FlxG.save.data.socialCredits == 2)
 		{
-			FlxG.mouse.visible = true;
+			FlxG.mouse.visible = false;
 			codeMenu.visible = true;
 			FlxG.save.data.socialCredits = PlayState.socialCredits;
 			FlxG.save.flush();
