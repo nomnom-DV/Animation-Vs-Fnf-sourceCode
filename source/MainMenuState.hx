@@ -478,14 +478,14 @@ class MainMenuState extends MusicBeatState
 		if (curSelected > 3) {
             curSelected = 0;
 		}
-		if (curSelected > 2 && FlxG.save.data.socialCredits < 2) {
+		if (curSelected > 2 && FlxG.save.data.unlockedSecret ==false) {
 			curSelected = 0;
-		} else if (curSelected > 2 && FlxG.save.data.socialCredits == 2) {
+		} else if (curSelected > 2 && FlxG.save.data.unlockedSecret ==true) {
 			curSelected = 3;
 		}
-		if (curSelected < 0 && FlxG.save.data.socialCredits < 2) {
+		if (curSelected < 0 && FFlxG.save.data.unlockedSecret ==false) {
 			curSelected = 2;
-		} else if (curSelected < 0 && FlxG.save.data.socialCredits == 2) {
+		} else if (curSelected < 0 && FlxG.save.data.unlockedSecret ==true) {
 			curSelected = 3;
 		}
 		if (curSelected >= menuItems.length)

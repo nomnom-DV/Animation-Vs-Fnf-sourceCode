@@ -3520,13 +3520,6 @@ class PlayState extends MusicBeatState
 
 		setChrome(0.0);
 
-		if (FlxG.save.data.socialCredits != null) {
-			socialCredits = FlxG.save.data.socialCredits;
-		}
-
-		if (FlxG.save.data.sugomaBalls != null) {
-			sugomaBalls = FlxG.save.data.sugomaBalls;
-		}
 
 		if (SONG.song.toLowerCase() == 'stickin to it')
 		{
@@ -3539,25 +3532,6 @@ class PlayState extends MusicBeatState
 				socialCredits += 1;
 				trace('the j');
 			}
-
-		if (socialCredits >=  2)
-		{
-			socialCredits = 2; 
-		}
-
-		if (socialCredits ==  1)
-		{
-			FlxG.save.data.socialCredits = socialCredits;
-			FlxG.save.flush();
-			trace('the j');
-		}
-
-		if (socialCredits ==  2)
-		{
-			FlxG.save.data.socialCredits = socialCredits;
-			FlxG.save.flush();
-			trace('the h');
-		}
 
 		#if ACHIEVEMENTS_ALLOWED
 		if(achievementObj != null) {
@@ -3663,41 +3637,37 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if (SONG.song.toLowerCase() == 'stickin to it' && FlxG.save.data.socialCredits == 2)
+				if (SONG.song.toLowerCase() == 'stickin to it')
 					{
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
-						FlxG.save.data.sugomaBalls = sugomaBalls;
+						FlxG.save.data.beatStickin = true
 						FlxG.save.flush();
 
-						if (FlxG.save.data.sugomaBalls == true) {
+						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+
+						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && FlxG.save.data.unlockedSecret ==true) {
 							MusicBeatState.switchState(new MainMenuState());
 						} else {
 							MusicBeatState.switchState(new HintState());
-						}
-
-						trace('hints where');
-					} else if (SONG.song.toLowerCase() == 'stickin to it' && FlxG.save.data.socialCredits < 2) {
-						MusicBeatState.switchState(new MainMenuState());
-						trace('lol you need 2 points');
-					}		
-					if (SONG.song.toLowerCase() == 'blues groove' && FlxG.save.data.socialCredits == 2)
-					{
-							FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
-							FlxG.save.data.sugomaBalls = sugomaBalls;
+							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
+						}
+					}		
+					if (SONG.song.toLowerCase() == 'blues groove')
+					{
+						FlxG.save.data.beatBlue = true;
+						FlxG.save.flush();
 
-							if (FlxG.save.data.sugomaBalls == true) {
-								MusicBeatState.switchState(new MainMenuState());
-								trace('hints where');
-							} else {
-								MusicBeatState.switchState(new HintState());
-							}
-					} else if (SONG.song.toLowerCase() == 'blues groove' && FlxG.save.data.socialCredits < 2) {
-						MusicBeatState.switchState(new MainMenuState());
-						trace('lol you need 2 points');
+						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+
+						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && FlxG.save.data.unlockedSecret ==true) {
+							MusicBeatState.switchState(new MainMenuState());
+						} else {
+							MusicBeatState.switchState(new HintState());
+							FlxG.save.data.unlockedSecret =true;
+							FlxG.save.flush();
+						}
 					}
+
 					if (SONG.song.toLowerCase() == 'chosen') {
 						MusicBeatState.switchState(new MainMenuState());
 					}
