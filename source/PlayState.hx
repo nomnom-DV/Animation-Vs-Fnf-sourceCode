@@ -310,6 +310,8 @@ class PlayState extends MusicBeatState
 	var chromIsSoAngyRnSaveMeLol:Float = 0;
 
 	var vignette:FlxSprite;
+	
+	var reanimatedbfOn:Bool = ClientPrefs.reanimatedbf;
 	override public function create()
 	{
 		if (curSong.toLowerCase() == 'stickin to it')
@@ -1024,7 +1026,10 @@ class PlayState extends MusicBeatState
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
 
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		if (reanimatedbfOn)
+			boyfriend = new Boyfriend(0, 0, 'bf-reanimated');
+		else
+			boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);

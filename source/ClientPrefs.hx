@@ -12,6 +12,7 @@ class ClientPrefs {
 	public static var shaders:Bool = true;
 	public static var bigHP:Bool = false;
 	public static var middleScroll:Bool = false;
+	public static var reanimatedbf:Bool = false;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
@@ -86,6 +87,7 @@ class ClientPrefs {
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.hitSound = hitSound;
+		FlxG.save.data.reanimatedbf = reanimatedbf;
 		FlxG.save.data.shaders = shaders;
 		FlxG.save.data.bigHP = bigHP;
 		FlxG.save.data.middleScroll = middleScroll;

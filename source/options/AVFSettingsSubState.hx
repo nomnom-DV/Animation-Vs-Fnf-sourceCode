@@ -34,6 +34,13 @@ class AVFSettingsSubState extends BaseOptionsMenu
 		title = 'Animation Vs FNF Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 		
+		var option:Option = new Option('Toggle ReAnimated BF',
+		'If checked, boyfriends skin will be replaced with re-animated bf (smoother)',
+		'reanimatedbf',
+		'bool',
+		false);
+		addOption(option);
+		
 		//I'd suggest using "Downscroll" as an example for making your own option since it is the simplest here
 		var option:Option = new Option('Hit Sounds', //Name
 			'If checked, notes will play a sound when you hit them.', //Description
