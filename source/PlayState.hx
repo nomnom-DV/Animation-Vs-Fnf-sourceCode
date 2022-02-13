@@ -3640,7 +3640,7 @@ class PlayState extends MusicBeatState
 			{
 				if (SONG.song.toLowerCase() == 'stickin to it')
 					{
-						FlxG.save.data.beatStickin = true
+						FlxG.save.data.beatStickin = true;
 						FlxG.save.flush();
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
