@@ -786,9 +786,42 @@ class PlayState extends MusicBeatState
 					trace(SONG.song.toLowerCase());
 				}
 			case 'tdl':
+				#if PRELOAD_ALL			
+				var images = [];
+				var xml = [];
+				trace("caching images...");
+	
+				for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters/animation/")))
+				{
+					if (!i.endsWith(".png"))
+						continue;
+					images.push(i);
+	
+					if (!i.endsWith(".xml"))
+						continue;
+					xml.push(i);
+				}
+				for (i in images)
+				{
+					var replaced = i.replace(".png","");
+					FlxG.bitmap.add(Paths.image("characters/animation/" + replaced,"shared"));
+					trace("this is " + replaced);
+				}
+			
+			for (i in xml)
+				{
+					var replaced = i.replace(".xml","");
+					FlxG.bitmap.add(Paths.image("characters/animation/" + replaced,"shared"));
+					trace("this is " + replaced);
+				}
+			#end
+			
 				var bg:BGSprite = new BGSprite('tdl_bg', 0, 0, 1, 1);
 				bg.screenCenter();
 				bg.x += 75;
+				add(bg);
+				remove(bg);
+
 				add(bg);
 			case 'animatedbg':
 
@@ -813,6 +846,8 @@ class PlayState extends MusicBeatState
 				//animatedbg.screenCenter();
 				animatedbg.y -= 350;
 				animatedbg.x -= 600;
+				add(animatedbg);
+				remove(animatedbg);
 
 				backdudes = new BGSprite('YellowBlueGreen', -400, 400, 0.9, 0.9, ['Back instance 1']);
 				backdudes.updateHitbox();
@@ -832,10 +867,21 @@ class PlayState extends MusicBeatState
 					animatedbg = new BGSprite('animatedbg', -500, -500, 0, 0);
 					animatedbg.scale.set(1.5, 1.5);
 					animatedbg.screenCenter();
+					add(animatedbg);
+					remove(animatedbg);
+				}
+
+				if(ClientPrefs.lowQuality) {
+					animatedbg = new BGSprite('animatedbg', -500, -500, 0, 0);
+					animatedbg.scale.set(1.5, 1.5);
+					animatedbg.screenCenter();
+					add(animatedbg);
+					remove(animatedbg);
 				}
 				
 				add(animatedbg);
 				add(backdudes);
+				add(frontdudes);
 		}
 
 		if(isPixelStage) {
@@ -4914,14 +4960,14 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'alan':
-				if(!ClientPrefs.lowQuality) {
-					theBois.dance(true);
+				if(ClientPrefs.lowQuality) {
+					remove(theBois);
 				}
 
 			case 'animatedbg':
-				if(!ClientPrefs.lowQuality) {
-					backdudes.dance(true);
-					frontdudes.dance(true);
+				if(ClientPrefs.lowQuality) {
+					remove(backdudes);
+					remove(frontdudes);
 				}
 				
 
