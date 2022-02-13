@@ -327,6 +327,13 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'vengeance') {
 			health = 2; 
 		}
+		if (curSong.toLowerCase() == 'chosen') {
+			FlxG.save.data.framerate = 240;
+			FlxG.updateFramerate = 240;
+		}else{ 
+			FlxG.save.data.framerate = 	ClientPrefs.framerate;
+			FlxG.updateFramerate = ClientPrefs.framerate;
+		}
 
 		setChrome(0.0);
 		
@@ -3689,7 +3696,7 @@ class PlayState extends MusicBeatState
 					if (SONG.song.toLowerCase() == 'chosen') {
 						MusicBeatState.switchState(new MainMenuState());
 					}
-					if (SONG.song.toLowerCase() == 'make some noise') {
+					if (SONG.song.toLowerCase() == 'vengeance') {
 						MusicBeatState.switchState(new MainMenuState());
 					}
 				trace('WENT BACK TO FREEPLAY??');
@@ -4260,23 +4267,27 @@ class PlayState extends MusicBeatState
 		dodged = false;
 		attacking=true;	
 		warning();
-		new FlxTimer().start(0.45, function(bozo:FlxTimer){
-			FlxG.sound.play(Paths.sound('darkLordAttack'));
-			dad.playAnim("attack",true);
-			dad.specialAnim = true;
-			if(!dodged) {
-				FlxG.camera.shake(0.05, 0.05);
-				health = 0;
-				trace("L bozo");
-				dodged=false;
-			} else {
-				boyfriend.playAnim('dodge');
-				dodged =false;
-				attacking = false;
-				health += 0.6;
-			}
+		new FlxTimer().start(0.41, function(A:FlxTimer) {
+			warning();
+			new FlxTimer().start(0.45, function(bozo:FlxTimer){
+				FlxG.sound.play(Paths.sound('darkLordAttack'));
+				dad.playAnim("attack",true);
+				dad.specialAnim = true;
+				if(!dodged) {
+					FlxG.camera.shake(0.05, 0.05);
+					health = 0;
+					trace("L bozo");
+					dodged=false;
+				} else {
+					boyfriend.playAnim('dodge');
+					dodged =false;
+					attacking = false;
+					health += 0.6;
+				}
+			});
 		});
 	}
+
 	function warning()
 	{
 		FlxG.sound.play(Paths.sound('alert'));
