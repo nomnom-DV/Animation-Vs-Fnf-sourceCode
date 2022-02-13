@@ -2424,6 +2424,7 @@ class PlayState extends MusicBeatState
 					boyfriend.playAnim('dodge', true);
 					new FlxTimer().start(0.1, function(tmr:FlxTimer) {
 						dodged = false;
+						canDodge = false;
 					});
 				}
 		}
@@ -4242,7 +4243,7 @@ class PlayState extends MusicBeatState
 		dodged = false;
 		attacking=true;	
 		warning();
-		new FlxTimer().start(0.41, function(A:FlxTimer) {
+		new FlxTimer().start(0.2, function(A:FlxTimer) {
 			warning();
 			new FlxTimer().start(0.45, function(bozo:FlxTimer){
 				FlxG.sound.play(Paths.sound('darkLordAttack'));
