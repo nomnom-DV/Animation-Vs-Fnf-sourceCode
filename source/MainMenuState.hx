@@ -351,9 +351,11 @@ class MainMenuState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.THREE)
 		{
-			trace('Social Credits: ' + FlxG.save.data.socialCredits);
+			FlxG.save.data.unlockedSecret = false;
+			FlxG.save.data.beatStickin = false;
+			FlxG.save.data.beatBlue = false;
+			trace('Social Credits: ' + FlxG.save.data.unlockedSecret);
 			trace('Curselected: ' + curSelected);
-			trace('Balls: ' + FlxG.save.data.sugomaBalls);
 		}
 
 		#if debug

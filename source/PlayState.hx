@@ -3645,9 +3645,9 @@ class PlayState extends MusicBeatState
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && FlxG.save.data.unlockedSecret ==true) {
+						if (FlxG.save.data.unlockedSecret) {
 							MusicBeatState.switchState(new MainMenuState());
-						} else {
+						} else if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
 							MusicBeatState.switchState(new HintState());
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
@@ -3660,9 +3660,9 @@ class PlayState extends MusicBeatState
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && FlxG.save.data.unlockedSecret ==true) {
+						if (FlxG.save.data.unlockedSecret) {
 							MusicBeatState.switchState(new MainMenuState());
-						} else {
+						} else if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
 							MusicBeatState.switchState(new HintState());
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
