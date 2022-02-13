@@ -483,7 +483,7 @@ class MainMenuState extends MusicBeatState
 		} else if (curSelected > 2 && FlxG.save.data.unlockedSecret ==true) {
 			curSelected = 3;
 		}
-		if (curSelected < 0 && FFlxG.save.data.unlockedSecret ==false) {
+		if (curSelected < 0 && FlxG.save.data.unlockedSecret ==false) {
 			curSelected = 2;
 		} else if (curSelected < 0 && FlxG.save.data.unlockedSecret ==true) {
 			curSelected = 3;
