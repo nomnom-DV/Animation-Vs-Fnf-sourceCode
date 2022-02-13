@@ -3645,12 +3645,12 @@ class PlayState extends MusicBeatState
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-						if (FlxG.save.data.unlockedSecret) {
-							MusicBeatState.switchState(new MainMenuState());
-						} else if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
+						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
 							MusicBeatState.switchState(new HintState());
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
+						} else {
+							MusicBeatState.switchState(new MainMenuState());
 						}
 					}		
 					if (SONG.song.toLowerCase() == 'blues groove')
@@ -3660,12 +3660,12 @@ class PlayState extends MusicBeatState
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-						if (FlxG.save.data.unlockedSecret) {
-							MusicBeatState.switchState(new MainMenuState());
-						} else if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
+						if (FlxG.save.data.beatStickin && FlxG.save.data.beatBlue && !FlxG.save.data.unlockedSecret){
 							MusicBeatState.switchState(new HintState());
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
+						} else {
+							MusicBeatState.switchState(new MainMenuState());
 						}
 					}
 
