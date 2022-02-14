@@ -9,7 +9,7 @@ local del = 0;
 local del2 = 0;
 local allowCountdown = false
 
-function onStartCountdown()
+function onStartCountdown() --cutscene, typed this so github would recognize the changed file lmao
     if not allowCountdown and not seenCutscene then --Block the first countdown
         startVideo('fight_cutscene');
         allowCountdown = true;
