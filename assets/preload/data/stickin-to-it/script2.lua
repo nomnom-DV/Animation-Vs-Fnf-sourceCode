@@ -1,25 +1,16 @@
 
 local xx = 600;
 local yy = 430;
-local xx2 = 800;
+local xx2 = 1300;
 local yy2 = 430;
 local ofs = 40;
 local followchars = true;
 local del = 0;
 local del2 = 0;
-local allowCountdown = false
-
-function onStartCountdown()
-    if not allowCountdown and not seenCutscene then --Block the first countdown
-        startVideo('fight_cutscene');
-        allowCountdown = true;
-        return Function_Stop;
-    end
-    return Function_Continue;
-end
 
 
 function onUpdate()
+    if curStep < 796 then
 	if del > 0 then
 		del = del - 1
 	end
@@ -81,3 +72,5 @@ function onUpdate()
     end
     
 end
+end
+

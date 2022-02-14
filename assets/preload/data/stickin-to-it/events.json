@@ -1,7 +1,7 @@
 {
 	"song": {
 		"speed": 3.1,
-		"stage": "alan",
+		"stage": "green",
 		"player1": "bf",
 		"player2": "green",
 		"player3": null,
@@ -460,6 +460,11 @@
 				85500,
 				[
 					[
+						"Camera Follow Pos",
+						"600",
+						"430"
+					],
+					[
 						"Set CamZoom",
 						"1",
 						""
@@ -473,26 +478,6 @@
 						"Play Animation",
 						"switch",
 						"Dad"
-					]
-				]
-			],
-			[
-				87000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.03",
-						""
-					]
-				]
-			],
-			[
-				87241.0714285714,
-				[
-					[
-						"Add Camera Zoom",
-						"0.03",
-						""
 					]
 				]
 			],
@@ -785,10 +770,10 @@
 		"notes": [],
 		"splashSkin": null,
 		"validScore": false,
-		"gfVersion": "gf",
+		"gfVersion": "couch_green",
 		"bpm": 140,
 		"arrowSkin": null,
 		"needsVoices": true,
-		"song": "Stickin To It"
+		"song": "Stickin-To-It"
 	}
 }

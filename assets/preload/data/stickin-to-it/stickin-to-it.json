@@ -7228,7 +7228,7 @@
 			}
 		],
 		"player2": "green",
-		"gfVersion": "gf",
+		"gfVersion": "couch_green",
 		"events": [
 			[
 				85500,
@@ -7251,7 +7251,7 @@
 				[
 					[
 						"Change Character",
-						"1",
+						"dad",
 						"green-guitar"
 					]
 				]
@@ -7262,7 +7262,7 @@
 		"song": "Stickin To It",
 		"sections": 0,
 		"validScore": true,
-		"stage": "alan",
+		"stage": "green",
 		"needsVoices": true,
 		"bpm": 140,
 		"speed": 3.1
