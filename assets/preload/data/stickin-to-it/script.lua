@@ -8,7 +8,6 @@ local followchars = true;
 local del = 0;
 local del2 = 0;
 
-
 function onUpdate()
     if curStep > 816 then
 	if del > 0 then
