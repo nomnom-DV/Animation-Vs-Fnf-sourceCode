@@ -1409,11 +1409,11 @@ class PlayState extends MusicBeatState
 			add(creditsText);
 			trace(SONG.song.toLowerCase());
 
-			new FlxTimer().start(15, function(tmr:FlxTimer) {
+			new FlxTimer().start(16, function(tmr:FlxTimer) {
 				FlxTween.tween(creditsBG,{x: 200}, 1.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(creditsText,{x: -475}, 1.4, {ease: FlxEase.expoInOut});
 			});
-			new FlxTimer().start(20, function(tmr:FlxTimer) {
+			new FlxTimer().start(21, function(tmr:FlxTimer) {
 				FlxTween.tween(creditsBG,{x: -500}, 1.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(creditsText,{x: -1000}, 1.4, {ease: FlxEase.expoInOut});
 			});
