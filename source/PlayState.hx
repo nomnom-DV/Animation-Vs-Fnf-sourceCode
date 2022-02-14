@@ -745,7 +745,7 @@ class PlayState extends MusicBeatState
 					add(bg);
 				}
 			case 'alan':
-				#if PRELOAD_ALL			
+				/*#if PRELOAD_ALL			
 				var images = [];
 				var xml = [];
 				trace("caching images...");
@@ -773,12 +773,12 @@ class PlayState extends MusicBeatState
 					FlxG.bitmap.add(Paths.image("characters/animation/" + replaced,"shared"));
 					trace("this is " + replaced);
 				}
-			#end
+			#end*/
 				var bg:BGSprite = new BGSprite('alan_becker_bg', -300,-1280, 1.0, 1.0);
 				add(bg);
 				remove(bg);
 			case 'tdl':
-				#if PRELOAD_ALL			
+				/*#if PRELOAD_ALL			
 				var images = [];
 				var xml = [];
 				trace("caching images...");
@@ -806,7 +806,7 @@ class PlayState extends MusicBeatState
 					FlxG.bitmap.add(Paths.image("characters/animation/" + replaced,"shared"));
 					trace("this is " + replaced);
 				}
-			#end
+			#end*/
 			
 				var bg:BGSprite = new BGSprite('tdl_bg', 0, 0, 1, 1);
 				bg.screenCenter();
@@ -815,7 +815,7 @@ class PlayState extends MusicBeatState
 				remove(bg);
 			case 'animatedbg':
 
-				var videos = [];
+				/*var videos = [];
 				trace("caching images...");
 	
 				for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/videos/")))
@@ -829,7 +829,7 @@ class PlayState extends MusicBeatState
 					var replaced = i.replace(".mp4","");
 					FlxG.bitmap.add(Paths.video("assets/videos/" + replaced,"shared"));
 					trace("this is " + replaced);
-				}
+				}*/
 
 				animatedbg = new BGSprite('animatedbg', 620, 330, 0, 0);
 				animatedbg.scale.set(2.7, 2.7);
