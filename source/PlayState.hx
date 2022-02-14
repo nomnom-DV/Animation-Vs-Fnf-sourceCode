@@ -745,7 +745,6 @@ class PlayState extends MusicBeatState
 					add(bg);
 				}
 			case 'alan':
-
 				#if PRELOAD_ALL			
 				var images = [];
 				var xml = [];
@@ -777,23 +776,7 @@ class PlayState extends MusicBeatState
 			#end
 				var bg:BGSprite = new BGSprite('alan_becker_bg', -300,-1280, 1.0, 1.0);
 				add(bg);
-
-				if (SONG.song.toLowerCase() == 'blues groove') {
-					theBois = new BGSprite('Sofa_bois_alt', 430, 350, 1.0, 1.0, ['Couch_beat']);
-					theBois.y += 35;
-					theBois.setGraphicSize(Std.int(theBois.width * 1.1));
-					theBois.updateHitbox();
-					add(theBois);
-					trace('alt');
-				}
-				else {
-					theBois = new BGSprite('Sofa_bois', 430, 350, 1.0, 1.0, ['Couch_beat']);
-					theBois.y += 35;
-					theBois.setGraphicSize(Std.int(theBois.width * 1.1));
-					theBois.updateHitbox();
-					add(theBois);
-					trace(SONG.song.toLowerCase());
-				}
+				remove(bg);
 			case 'tdl':
 				#if PRELOAD_ALL			
 				var images = [];
@@ -830,8 +813,6 @@ class PlayState extends MusicBeatState
 				bg.x += 75;
 				add(bg);
 				remove(bg);
-
-				add(bg);
 			case 'animatedbg':
 
 				var videos = [];
@@ -857,16 +838,6 @@ class PlayState extends MusicBeatState
 				animatedbg.x -= 600;
 				add(animatedbg);
 				remove(animatedbg);
-
-				backdudes = new BGSprite('YellowBlueGreen', -400, 400, 0.9, 0.9, ['Back instance 1']);
-				backdudes.updateHitbox();
-				add(backdudes);
-				remove(backdudes);
-
-				frontdudes = new BGSprite('RedAndOrange', -600, 400, 0.9, 0.9, ['Front instance 1']);
-				frontdudes.updateHitbox();
-				add(frontdudes);
-				remove(frontdudes);
 				
 				var video:MP4Handler = new MP4Handler();
 				video.playMP4(Paths.video('animatedbg'), null, animatedbg);
@@ -891,6 +862,21 @@ class PlayState extends MusicBeatState
 				add(animatedbg);
 				add(backdudes);
 				add(frontdudes);
+
+				if(!ClientPrefs.lowQuality) {
+					backdudes = new BGSprite('YellowBlueGreen', -400, 400, 0.9, 0.9, ['Back instance 1']);
+					backdudes.updateHitbox();
+					add(backdudes);
+					remove(backdudes);
+	
+					frontdudes = new BGSprite('RedAndOrange', -600, 400, 0.9, 0.9, ['Front instance 1']);
+					frontdudes.updateHitbox();
+					add(frontdudes);
+					remove(frontdudes);
+					} else if(ClientPrefs.lowQuality) {
+						remove(frontdudes);
+						remove(backdudes);
+					}
 		}
 
 		if(isPixelStage) {
