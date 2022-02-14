@@ -1028,6 +1028,9 @@ class PlayState extends MusicBeatState
 
 		if (reanimatedbfOn)
 			boyfriend = new Boyfriend(0, 0, 'bf-reanimated');
+		    if (SONG.song.toLowerCase() == 'chosen') {
+				boyfriend = new Boyfriend(0, 0, SONG.player1);	
+			}
 		else
 			boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
