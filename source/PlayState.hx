@@ -2407,9 +2407,6 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'chosen')
 		{
 			canPause = false;
-			timeBar.visible = false;
-			timeBarBG.visible = false;
-			scoreTxt.visible = false;
 		}
 
 		if (SONG.song.toLowerCase() == 'vengeance')
