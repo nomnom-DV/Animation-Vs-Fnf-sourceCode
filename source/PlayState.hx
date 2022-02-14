@@ -812,7 +812,6 @@ class PlayState extends MusicBeatState
 				bg.screenCenter();
 				bg.x += 75;
 				add(bg);
-				remove(bg);
 			case 'animatedbg':
 
 				/*var videos = [];
