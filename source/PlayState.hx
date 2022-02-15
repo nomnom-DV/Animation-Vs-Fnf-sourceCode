@@ -1514,10 +1514,6 @@ class PlayState extends MusicBeatState
 						});
 					});
 
-				case 'chosen':
-					chosenBlack(doof);
-					startVideo("fight_cutscene");
-
 				default:
 					startCountdown();
 			}
@@ -4218,6 +4214,7 @@ class PlayState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('darkLordAttack'));
 				dad.playAnim("attack",true);
 				dad.specialAnim = true;
+				new FlxTimer().start(0.1, function(A:FlxTimer) {
 				if(!dodged) {
 					FlxG.camera.shake(0.05, 0.05);
 					health = 0;
@@ -4229,6 +4226,7 @@ class PlayState extends MusicBeatState
 					attacking = false;
 					health += 0.6;
 				}
+				});
 			});
 		});
 	}
@@ -4338,7 +4336,7 @@ class PlayState extends MusicBeatState
 					   }	
 					}
 					    FlxG.sound.play(Paths.sound('glitch'), 1);
-					    health -= 0.25;
+					    health -= 0.14;
 					    glitchEffect.alpha = 0.6;
 					    glitchEffect.animation.play('glitch');
 						new FlxTimer().start(0.5, function(tmr:FlxTimer)
