@@ -11,6 +11,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.FlxCamera;
+import flixel.tweens.FlxEase;
 
 class HintState extends MusicBeatState
 {
@@ -42,7 +43,7 @@ class HintState extends MusicBeatState
         if (ClientPrefs.shaders) {
             chromeOffset /= 350;
             if (chromeOffset <= 0)
-             setChrome(0.0);
+             setChrome(chromeOffset);
             else
             {
             setChrome(chromeOffset);
@@ -109,6 +110,7 @@ class HintState extends MusicBeatState
         if(!leftState) {
             if (controls.ACCEPT || controls.BACK) {
                 leftState = true;
+                FlxTween.tween(chosenText, {alpha: 0}, 1, {ease: FlxEase.quadIn});
                 MusicBeatState.switchState(new MainMenuState());
                 FlxG.sound.play(Paths.sound('cancelMenu'));
             }

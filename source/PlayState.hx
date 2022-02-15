@@ -2366,6 +2366,8 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 
+		FlxG.mouse.visible = false;
+
 		if(FlxG.keys.justPressed.SPACE && attacking && canDodge) {
 			dodged = true; 
 			canDodge = false;
@@ -3488,6 +3490,10 @@ class PlayState extends MusicBeatState
 				return;
 			}
 		}
+
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+
+		FlxG.sound.music.fadeIn(4, 0, 0.7);
 		
 		timeBarBG.visible = false;
 		timeBar.visible = false;
@@ -3619,7 +3625,7 @@ class PlayState extends MusicBeatState
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
 						} else {
-							MusicBeatState.switchState(new MainMenuState());
+							LoadingState.loadAndSwitchState(new MainMenuState());
 						}
 					}		
 					if (SONG.song.toLowerCase() == 'blues groove')
@@ -3634,15 +3640,15 @@ class PlayState extends MusicBeatState
 							FlxG.save.data.unlockedSecret =true;
 							FlxG.save.flush();
 						} else {
-							MusicBeatState.switchState(new MainMenuState());
+							LoadingState.loadAndSwitchState(new MainMenuState());
 						}
 					}
 
 					if (SONG.song.toLowerCase() == 'chosen') {
-						MusicBeatState.switchState(new MainMenuState());
+						LoadingState.loadAndSwitchState(new MainMenuState());
 					}
 					if (SONG.song.toLowerCase() == 'vengeance') {
-						MusicBeatState.switchState(new MainMenuState());
+						LoadingState.loadAndSwitchState(new MainMenuState());
 					}
 				trace('WENT BACK TO FREEPLAY??');
 				cancelFadeTween();
