@@ -232,8 +232,8 @@ class PlayState extends MusicBeatState
 
 	var upperBoppers:BGSprite;
 	var bottomBoppers:BGSprite;
-	var backdudes:BGSprite;
-	var frontdudes:BGSprite;
+	var backdudes:FlxSprite;
+	var frontdudes:FlxSprite;
 	var theBois:BGSprite;
 	var santa:BGSprite;
 	var heyTimer:Float;
@@ -856,21 +856,16 @@ class PlayState extends MusicBeatState
 				}
 				
 				add(animatedbg);
-				add(backdudes);
-				add(frontdudes);
 
 				if(!ClientPrefs.lowQuality) {
-					backdudes = new BGSprite('YellowBlueGreen', -400, 400, 0.9, 0.9, ['Back instance 1']);
+					backdudes = new FlxSprite(-400, 400);
+					backdudes.frames = Paths.getSparrowAtlas('YellowBlueGreen');
+					backdudes.animation.addByPrefix('dance', 'Back instance 1', 24);
+					backdudes.animation.play('dance');
+					backdudes.scrollFactor.set(0.9, 0.9);
 					backdudes.updateHitbox();
 					add(backdudes);
-					remove(backdudes);
-	
-					frontdudes = new BGSprite('RedAndOrange', -600, 400, 0.9, 0.9, ['Front instance 1']);
-					frontdudes.updateHitbox();
-					add(frontdudes);
-					remove(frontdudes);
 					} else if(ClientPrefs.lowQuality) {
-						remove(frontdudes);
 						remove(backdudes);
 					}
 		}
@@ -891,12 +886,7 @@ class PlayState extends MusicBeatState
 		if(curStage == 'spooky') {
 			add(halloweenWhite);
 		}
-
-		if(curStage == 'animatedbg') {
-			add(frontdudes);
-		}
 		
-	
 		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
@@ -1186,6 +1176,20 @@ class PlayState extends MusicBeatState
 
 		FlxG.fixedTimestep = false;
 		moveCameraSection(0);
+
+		if (SONG.song.toLowerCase() == 'chosen') {
+			if(!ClientPrefs.lowQuality) {
+				frontdudes = new FlxSprite(-600, 400);
+				frontdudes.frames = Paths.getSparrowAtlas('RedAndOrange');
+				frontdudes.animation.addByPrefix('dance', 'Front instance 1', 24);
+				frontdudes.animation.play('dance');
+				frontdudes.scrollFactor.set(0.9, 0.9);
+				frontdudes.updateHitbox();
+				add(frontdudes);
+				} else if(ClientPrefs.lowQuality) {
+					remove(frontdudes);
+				}
+		}
 
 		if (!ClientPrefs.bigHP)
 			{
@@ -2400,7 +2404,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.keys.justPressed.SPACE && canDodge)
 				{
 					boyfriend.playAnim('dodge', true);
-					new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+					new FlxTimer().start(0.05, function(tmr:FlxTimer) {
 						dodged = false;
 						canDodge = false;
 					});

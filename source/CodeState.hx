@@ -40,11 +40,11 @@ class CodeState extends MusicBeatState
 
     windowPopUp = new FlxSprite(-80).loadGraphic(Paths.image('SymbolWindowPopup'));
     windowPopUp.scale.set(1.1, 1.1);
-      windowPopUp.updateHitbox();
-      windowPopUp.screenCenter();
+    windowPopUp.updateHitbox();
+    windowPopUp.screenCenter();
     windowPopUp.x -= 25;
-      windowPopUp.antialiasing = ClientPrefs.globalAntialiasing;
-      add(windowPopUp);
+    windowPopUp.antialiasing = ClientPrefs.globalAntialiasing;
+    add(windowPopUp);
 
     enterCpde = new FlxInputText(500, 350,FlxG.width,"",32,FlxColor.BLACK,FlxColor.TRANSPARENT);
     enterCpde.screenCenter();
@@ -53,18 +53,18 @@ class CodeState extends MusicBeatState
     enterCpde.scrollFactor.set();
     enterCpde.scale.set(0.4, 0.4);
     enterCpde.background = false;
-    enterCpde.forceCase = 1;
+    enterCpde.forceCase = 2;
     enterCpde.backgroundColor = FlxColor.TRANSPARENT;
     enterCpde.callback = function(text,action){
       if(action=='enter'){
-        if(text.toUpperCase() == "CHOSEN")
+        if(text.toLowerCase() == "chosen")
           {
             FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
             LoadingState.loadAndSwitchState(new WarningState()); 
             PlayState.isStoryMode = false;
             PlayState.storyDifficulty = 3;
           }
-        else if(text.toUpperCase() == "VENGEANCE")
+        else if(text.toLowerCase() == "vengeance")
           {
             FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
             PlayState.SONG = Song.loadFromJson('vengeance', 'vengeance');
@@ -75,7 +75,7 @@ class CodeState extends MusicBeatState
                   LoadingState.loadAndSwitchState(new PlayState()); 
               });
           }
-        else if(text.toUpperCase() == "BLOXIAM") 
+        else if(text.toLowerCase() == "bloxiam") 
           {
             CoolUtil.browserLoad("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
           }
