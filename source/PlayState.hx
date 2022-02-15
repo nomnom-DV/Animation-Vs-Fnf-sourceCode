@@ -270,9 +270,6 @@ class PlayState extends MusicBeatState
 	var warningText:FlxSprite;
 	var detectAttack:Bool = false;
 
-
-	public static var socialCredits:Int = 0;
-
 	public static var sugomaBalls = false;
 
 	#if desktop
@@ -3505,19 +3502,6 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		setChrome(0.0);
-
-
-		if (SONG.song.toLowerCase() == 'stickin to it')
-		{
-			socialCredits += 1;
-			trace('the j');
-		}
-
-		if (SONG.song.toLowerCase() == 'blues groove')
-			{
-				socialCredits += 1;
-				trace('the j');
-			}
 
 		#if ACHIEVEMENTS_ALLOWED
 		if(achievementObj != null) {

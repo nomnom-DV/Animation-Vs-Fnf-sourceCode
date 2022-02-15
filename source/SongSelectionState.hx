@@ -252,39 +252,6 @@ class SongSelectionState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		if (FlxG.save.data.socialCredits != null) {
-			PlayState.socialCredits = FlxG.save.data.socialCredits;
-		}
-
-		if (FlxG.save.data.socialCredits == 0)
-		{
-			FlxG.mouse.visible = false;
-			codeMenu.visible = false;
-			trace(PlayState.socialCredits);
-		}
-
-		if (FlxG.save.data.socialCredits == 1)
-		{
-			FlxG.mouse.visible = false;
-			codeMenu.visible = false;
-			trace(PlayState.socialCredits);
-		}
-
-		if (FlxG.save.data.socialCredits == 2)
-		{
-			FlxG.mouse.visible = false;
-			codeMenu.visible = true;
-			FlxG.save.data.socialCredits = PlayState.socialCredits;
-			FlxG.save.flush();
-		}
-
-		if (FlxG.keys.justPressed.ONE)
-		{
-			FlxG.save.data.socialCredits = 0;
-			FlxG.save.flush();
-			trace(PlayState.socialCredits);
-		}
-
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 

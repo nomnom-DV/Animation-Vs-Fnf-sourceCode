@@ -328,48 +328,45 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		if (FlxG.save.data.socialCredits != null) {
-			PlayState.socialCredits = FlxG.save.data.socialCredits;
+		if (FlxG.save.data.unlockedSecret ==false)
+		{
+			secretItem.visible =false;
 		}
 
-		if (FlxG.save.data.socialCredits == 0)
+		if (FlxG.save.data.unlockedSecret ==false)
 		{
-			secretItem.visible = false;
+			secretItem.visible =false;
 		}
 
-		if (FlxG.save.data.socialCredits == 1)
+		if (FlxG.save.data.unlockedSecret ==true)
 		{
-			secretItem.visible = false;
+			secretItem.visible =true;
 		}
 
-		if (FlxG.save.data.socialCredits == 2)
+		if (FlxG.keys.justPressed.FIVE)
 		{
-			secretItem.visible = true;
-			FlxG.save.data.socialCredits = PlayState.socialCredits;
-			FlxG.save.flush();
-		}
-
-		if (FlxG.keys.justPressed.THREE)
-		{
-			FlxG.save.data.unlockedSecret = false;
-			FlxG.save.data.beatStickin = false;
-			FlxG.save.data.beatBlue = false;
-			trace('Social Credits: ' + FlxG.save.data.unlockedSecret);
+			trace('Stickin: ' + FlxG.save.data.beatStickin);
+			trace('Blue: ' + FlxG.save.data.beatBlue);
+			trace('Secret: ' + FlxG.save.data.unlockedSecret);
 			trace('Curselected: ' + curSelected);
 		}
 
 		#if debug
 		if (FlxG.keys.justPressed.ONE)
 		{
-			FlxG.save.data.socialCredits = 0;
+			FlxG.save.data.beatStickin =false;
 			FlxG.save.flush();
 		}
-
 		if (FlxG.keys.justPressed.TWO)
-		{
-			FlxG.save.data.socialCredits = 2;
-			FlxG.save.flush();
-		}
+			{
+				FlxG.save.data.beatBlue =false;
+				FlxG.save.flush();
+			}
+			if (FlxG.keys.justPressed.THREE)
+				{
+					FlxG.save.data.unlockedSecret =false;
+					FlxG.save.flush();
+				}
 		#end
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
@@ -442,11 +439,11 @@ class MainMenuState extends MusicBeatState
 									case 'freeplay':
 										MusicBeatState.switchState(new SongSelectionState());
 									case 'secret':
-										if (FlxG.save.data.socialCredits == 2)
+										if (FlxG.save.data.unlockedSecret ==true)
 										{
 											MusicBeatState.switchState(new CodeState());
 										}
-										else if (FlxG.save.data.socialCredits)
+										else if (FlxG.save.data.unlockedSecret ==false) 
 										{
 											FlxG.camera.shake();
 										}
