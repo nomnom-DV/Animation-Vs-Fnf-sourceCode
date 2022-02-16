@@ -773,7 +773,6 @@ class PlayState extends MusicBeatState
 			#end*/
 				var bg:BGSprite = new BGSprite('alan_becker_bg', -300,-1280, 1.0, 1.0);
 				add(bg);
-				remove(bg);
 			case 'tdl':
 				/*#if PRELOAD_ALL			
 				var images = [];
@@ -2406,7 +2405,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.keys.justPressed.SPACE && canDodge)
 				{
 					boyfriend.playAnim('dodge', true);
-					new FlxTimer().start(0.05, function(tmr:FlxTimer) {
+					new FlxTimer().start(0.1, function(tmr:FlxTimer) {
 						dodged = false;
 						canDodge = false;
 					});
@@ -4218,7 +4217,7 @@ class PlayState extends MusicBeatState
 		dodged = false;
 		attacking=true;	
 		warning();
-		new FlxTimer().start(0.2, function(A:FlxTimer) {
+		new FlxTimer().start(0.25, function(A:FlxTimer) {
 			warning();
 			new FlxTimer().start(0.45, function(bozo:FlxTimer){
 				FlxG.sound.play(Paths.sound('darkLordAttack'));
