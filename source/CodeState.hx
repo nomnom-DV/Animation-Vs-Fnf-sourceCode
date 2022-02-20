@@ -22,133 +22,96 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxMath;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.ui.FlxSpriteButton;
 
 class CodeState extends MusicBeatState
 {
-  var enterCpde:FlxInputText;
+  var codeInput:FlxInputText;
 
-  var forceCase:Int;
-
-  var goodText:FlxText;
-  var lengthText:FlxText;
-  var resetText:FlxText;
-  var invalidText:FlxText;
-
-  var ok:FlxSpriteButton;
-  var cancel:FlxSpriteButton;
-  var exit:FlxSpriteButton;
-  var advanced:FlxSpriteButton;
-
-  var image:FlxSprite;
-
-  var windowPopUp:FlxSprite;
+  var wrongTxt:FlxText;
+  var noTxt:FlxText;
   override function create()
   {
+
+    FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+	FlxG.sound.music.fadeIn(1, 0, 0.8);
+
     FlxG.mouse.visible = true;
 
-    windowPopUp = new FlxSprite(-80).loadGraphic(Paths.image('SymbolWindowPopup'));
-    windowPopUp.scale.set(1.1, 1.1);
-    windowPopUp.updateHitbox();
-    windowPopUp.screenCenter();
-    windowPopUp.x -= 25;
-    windowPopUp.antialiasing = ClientPrefs.globalAntialiasing;
-    add(windowPopUp);
-
-    enterCpde = new FlxInputText(500, 350,FlxG.width,"",32,FlxColor.BLACK,FlxColor.TRANSPARENT);
-    enterCpde.caretColor = FlxColor.TRANSPARENT;
-    enterCpde.screenCenter();
-    enterCpde.y -= 21;
-    enterCpde.x += 90;
-    enterCpde.scrollFactor.set();
-    enterCpde.scale.set(0.4, 0.4);
-    enterCpde.background = false;
-    enterCpde.forceCase = 2;
-    enterCpde.maxLength = 15;
-    enterCpde.backgroundColor = FlxColor.TRANSPARENT;
-    enterCpde.callback = function(text,action){
+    codeInput = new FlxInputText(500, 350,FlxG.width,"enter code",32,FlxColor.WHITE,FlxColor.TRANSPARENT);
+    codeInput.screenCenter();
+    codeInput.scrollFactor.set();
+    codeInput.background = false;
+    codeInput.x += 300;
+    codeInput.backgroundColor = FlxColor.TRANSPARENT;
+    codeInput.callback = function(text,action){
       if(action=='enter'){
-        if(text.toLowerCase() == "chosen")
+        if(text.toLowerCase() == "the fourth day")
           {
-            goodText.alpha = 1;
-            new FlxTimer().start(0.5, function(tmr:FlxTimer)
-              {
-               FlxTween.tween(goodText, {alpha: 0}, 0.45, {ease: FlxEase.quadIn});
-              });
-              new FlxTimer().start(0.8, function(tmr:FlxTimer)
+            startDaSong('absent');
+            FlxG.save.data.fatherUnlocked = true;
+          }
+        else if(text.toLowerCase() == "hands")
+          {
+            startDaSong('grab');
+            FlxG.save.data.handsUnlocked = true;
+          }
+        else if(text.toLowerCase() == "ben drowned")
+        {
+            startDaSong('grab');
+            FlxG.save.data.handsUnlocked = true;
+        }
+        else if(text.toUpperCase() == "ascend") 
+          {
+            CoolUtil.browserLoad("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+          }
+        else if(text.toLowerCase() == "sex")
+            {
+                //MP4Handler.playMP4("porn hub intro", lol);
+            }
+        else if(text.toLowerCase() == 'sussus drownus')
+          {
+            startDaSong('sussus-drownus');
+          }
+        else if(text.toLowerCase() == "ink demon")
+            {
+                noTxt = new FlxText(0, 0, 0, "litterally no", 32);
+                noTxt.setFormat("VCR OSD Mono", 36, FlxColor.RED, CENTER, SHADOW,FlxColor.BLACK);
+                noTxt.scale.set(3,3);
+                noTxt.screenCenter();
+                noTxt.y += 100;      
+                add(noTxt);
+                noTxt.visible =true;
+                new FlxTimer().start(0.7, function(tmr:FlxTimer)
                 {
-                  FlxTween.tween(FlxG.camera, {zoom: 5}, 0.2, {ease: FlxEase.expoIn});
-                  PlayState.isStoryMode = false;
-                  PlayState.storyDifficulty = 3;
+                    Sys.exit(0);
                 });
-                new FlxTimer().start(1, function(tmr:FlxTimer)
-                  {
-                    LoadingState.loadAndSwitchState(new WarningState()); 
-                  });
-          }
-        else if(text.toLowerCase() == "vengeance")
-          {
-            goodText.alpha = 1;
-            new FlxTimer().start(0.5, function(tmr:FlxTimer)
-             {
-              FlxTween.tween(goodText, {alpha: 0}, 0.45, {ease: FlxEase.quadIn});
-             });
-            new FlxTimer().start(0.8, function(tmr:FlxTimer)
-              {
-                FlxTween.tween(FlxG.camera, {zoom: 5}, 0.2, {ease: FlxEase.expoIn});
-                PlayState.SONG = Song.loadFromJson('vengeance', 'vengeance');
-                PlayState.isStoryMode = false;
-                PlayState.storyDifficulty = 3;
-              });
-            new FlxTimer().start(1, function(tmr:FlxTimer)
-              {
-                  LoadingState.loadAndSwitchState(new PlayState()); 
-              });
-          }
-        else if(text.toLowerCase() == "bloxiam") 
-          {
-            image.alpha = 1;
-            new FlxTimer().start(2.5, function(tmr:FlxTimer)
-              {
-                FlxTween.tween(image, {alpha: 0}, 0.45, {ease: FlxEase.quadIn});
-              });
-          }
+            }
+        else if(text.toLowerCase() == 'ten zie' || text.toLowerCase() == 'teensie' || text.toLowerCase() == 'tensie' || text.toLowerCase() == 'teen c' || text.toLowerCase() == 'teenzie' || text.toLowerCase() == 'teensi' || text.toLowerCase() == 'teenzi')
+            {
+                Sys.exit(0);
+            }
         else {
           //nuh uh
+          FlxG.sound.play(Paths.sound('cancelMenu'));
+          FlxG.camera.shake(0.0025, 0.50);
+          add(wrongTxt);
+          new FlxTimer().start(2, function(tmr:FlxTimer) {
+            remove(wrongTxt);
+          });
         }
       }
     }
-    add(enterCpde);
+    wrongTxt = new FlxText(0, 0, 0, "You can't enter a symbol with this name", 32);
+    wrongTxt.setFormat("VCR OSD Mono", 36, FlxColor.RED, CENTER, SHADOW,FlxColor.BLACK);
+    wrongTxt.shadowOffset.set(2,2);
+    wrongTxt.screenCenter();
+    wrongTxt.y += 100;
+    //add(wrongTxt);
+    wrongTxt.visible =false;
+    wrongTxt.visible =true;
+
+    add(codeInput);
     FlxG.mouse.visible=true;
-
-    invalidText = new FlxText(0, 0, FlxG.width, "", 20);
-		invalidText.setFormat(Paths.font("tahoma.ttf"), 100, FlxColor.RED, FlxTextBorderStyle.OUTLINE,FlxColor.RED);
-		invalidText.screenCenter();
-    invalidText.y += 25;
-		invalidText.scrollFactor.set();
-		invalidText.borderSize = 0.1;
-    invalidText.alpha = 0;
-    invalidText.scale.set(0.15, 0.15);
-    invalidText.text = 'Invalid Code, try another one';
-    add(invalidText);
-
-    goodText = new FlxText(0, 0, FlxG.width, "", 20);
-		goodText.setFormat(Paths.font("tahoma.ttf"), 100, FlxColor.GREEN, FlxTextBorderStyle.OUTLINE,FlxColor.GREEN);
-		goodText.screenCenter();
-    goodText.y += 25;
-		goodText.scrollFactor.set();
-		goodText.borderSize = 0.1;
-    goodText.alpha = 0;
-    goodText.scale.set(0.15, 0.15);
-    goodText.text = 'Valid Code, loading...';
-    add(goodText);
-
-        image = new FlxSprite().loadGraphic(Paths.image('bloxiam', 'preload'));
-		image.antialiasing = ClientPrefs.globalAntialiasing;
-		image.updateHitbox();
-        image.screenCenter();
-		image.alpha = 0;
-        add(image);
 
     super.create();
   }
@@ -157,26 +120,31 @@ class CodeState extends MusicBeatState
   override function update(elapsed:Float){
     timer += elapsed;
     FlxG.sound.music.volume = FlxMath.lerp(FlxG.sound.music.volume,.5,.1);
-    if (controls.BACK && !enterCpde.hasFocus)
+    if (controls.BACK && !codeInput.hasFocus)
     {
-      FlxG.sound.play(Paths.sound('cancelMenu'));
+        FlxG.sound.play(Paths.sound('cancelMenu'));
+        FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
-      FlxG.switchState(new MainMenuState());
-      FlxG.mouse.visible=false;
+        FlxG.sound.music.fadeIn(4, 0, 0.7);
+        FlxG.switchState(new MainMenuState());
+        FlxG.mouse.visible=true;
     }
 
-    if (FlxG.keys.justPressed.ANY) {
-      FlxG.sound.play(Paths.sound('keyboardPress'));
-   }
-
-    if(FlxG.keys.justPressed.ESCAPE && enterCpde.hasFocus){
-      enterCpde.hasFocus=false;
+    if(FlxG.keys.justPressed.ESCAPE && codeInput.hasFocus){
+        codeInput.hasFocus=false;
     }
 
     super.update(elapsed);
   }
-  override function beatHit()
-    {   
-        super.beatHit();
-    }
+  function startDaSong(songName:String = "", songName2:String = "") {
+    if (songName == 'sussus-drownus')
+      PlayState.SONG = Song.loadFromJson(songName, songName);
+    else
+      PlayState.SONG = Song.loadFromJson(songName + '-hard', songName);
+    PlayState.isStoryMode = true;
+    PlayState.storyDifficulty = 2;
+    PlayState.storyWeek = 699;
+    trace('CUR WEEK' + PlayState.storyWeek);
+    LoadingState.loadAndSwitchState(new PlayState());
+  }
 }
