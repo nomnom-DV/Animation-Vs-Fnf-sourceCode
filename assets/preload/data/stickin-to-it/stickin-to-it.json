@@ -7251,26 +7251,6 @@
 		"gfVersion": "couch_green",
 		"events": [
 			[
-				0,
-				[
-					[
-						"Change Character",
-						"dad",
-						"green-guitar"
-					]
-				]
-			],
-			[
-				107.142857142857,
-				[
-					[
-						"Change Character",
-						"dad",
-						"green"
-					]
-				]
-			],
-			[
 				85928.5714285714,
 				[
 					[
