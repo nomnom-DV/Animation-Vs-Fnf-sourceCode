@@ -9,6 +9,12 @@ local del = 0;
 local del2 = 0;
 
 function onUpdate()
+    --screen shake when green does the thing
+    if curStep == 816 then
+       triggerEvent('Screen Shake','0.3, 0.009');
+    else
+
+    --cam movement
     if curStep > 816 then
 	if del > 0 then
 		del = del - 1
@@ -72,4 +78,7 @@ function onUpdate()
     
 end
 end
+end
 
+
+--if 
