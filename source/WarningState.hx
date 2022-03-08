@@ -16,6 +16,7 @@ class WarningState extends MusicBeatState
 	public static var leftState:Bool = false;
 
 	var warnText:FlxText;
+	var warnText2:FlxText;
 	override function create()
 	{
 		super.create();
@@ -33,6 +34,12 @@ class WarningState extends MusicBeatState
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
 		add(warnText);
+		
+		warnText2 = new FlxText(5, 5, FlxG.width,
+			"Warning: Press M to go to TitleState.",
+			32);
+		warnText2.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		add(warnText2);
 	}
 
 	override function update(elapsed:Float)
